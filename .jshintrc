@@ -1,9 +1,11 @@
 {
-  "predef": {
-    "document": true,
-    "window": true,
-    "KingmesajENV": true
-  },
+  "predef": [
+    "document",
+    "window",
+    "-Promise",
+    "$",
+    "jquery"
+  ],
   "browser" : true,
   "boss" : true,
   "curly": true,

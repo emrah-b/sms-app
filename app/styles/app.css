@@ -1,3 +1,71 @@
-html, body {
-  margin: 20px;
+.app-btn-subtitle {
+    filter: alpha(opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -ms-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out !important;
+}
+.app-btn-subtitle:hover, a:hover .app-btn-subtitle, span:hover .app-btn-subtitle {
+    filter: alpha(opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    -moz-opacity: 100;
+    -khtml-opacity: 100;
+    opacity: 100;
+}
+.margin-left-5 {
+    margin-left: 5px !important;
+}
+.margin-left-10 {
+    margin-left: 10px !important;
+}
+.margin-left-15 {
+    margin-left: 15px !important;
+}
+.margin-left-30 {
+    margin-left: 20px !important;
+}
+.error {
+    border-color: #B94A48 !important;
+}
+
+.add-tag .add-tag-button {
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out !important;
+}
+.add-tag .add-tag-input {
+    display: none;
+    filter: alpha(opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out !important;
+}
+.add-tag.adding .add-tag-button {
+    display: none;
+}
+.add-tag.adding .add-tag-input {
+    display: inline-block;
+    filter: alpha(opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    -moz-opacity: 100;
+    -khtml-opacity: 100;
+    opacity: 100;
+}
+
+.ember-list-view {
+  overflow: auto;
+  position: relative;
 }

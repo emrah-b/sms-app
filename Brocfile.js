@@ -4,17 +4,33 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp();
 
-// Use `app.import` to add additional libraries to the generated
-// output files.
-//
-// If you need to use different assets in different
-// environments, specify an object as the first parameter. That
-// object's keys should be the environment name and the values
-// should be the asset to use in that environment.
-//
-// If the library that you are including contains AMD or ES6
-// modules that you would like to import into your application
-// please specify an object with the list of modules as keys
-// along with the exports of each module as its value.
+app.import("bower_components/bootstrap/dist/css/bootstrap.min.css");
+app.import("bower_components/select2/select2-bootstrap.css");
+app.import("bower_components/select2/select2.css");
+app.import("bower_components/select2/select2-spinner.gif");
+app.import("bower_components/bootstrap/dist/js/bootstrap.min.js");
+app.import('bower_components/moment/min/moment.min.js');
+app.import('bower_components/moment/locale/tr.js');
+app.import('bower_components/ic-styled/main.js');
+app.import('bower_components/ember-utils/dist/globals/main.js');
+app.import('bower_components/ember-components/dist/globals/main.js');
+app.import('bower_components/select2/select2.min.js');
+app.import('bower_components/select2/select2_locale_tr.js');
+app.import('bower_components/dcjqaccordion/js/jquery.cookie.js');
+app.import('bower_components/dcjqaccordion/js/jquery.dcjqaccordion.2.7.min.js');
+app.import('bower_components/bootbox/bootbox.js');
+app.import("bower_components/jQuery-Smart-Wizard/js/jquery.smartWizard.js");
+
+app.import("vendor/plugins/perfect-scrollbar/src/perfect-scrollbar.css");
+app.import("vendor/plugins/animate.css/animate.min.css");
+
+app.import("vendor/plugins/perfect-scrollbar/src/jquery.mousewheel.js");
+app.import("vendor/plugins/perfect-scrollbar/src/perfect-scrollbar.js");
+app.import("vendor/plugins/jquery.scrollTo/jquery.scrollTo.min.js");
+app.import("vendor/plugins/velocity/jquery.velocity.min.js");
+app.import("vendor/plugins/jquery.sparkline/jquery.sparkline.js");
+
+app.import('vendor/js/index.js');
+app.import('vendor/js/main.js');
 
 module.exports = app.toTree();

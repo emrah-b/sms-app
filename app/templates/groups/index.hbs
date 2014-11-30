@@ -1,0 +1,63 @@
+<div class="toolbar row">
+    <div class="col-sm-6 hidden-xs">
+        <div class="page-header">
+            <h1>Gruplar
+                <small>Grup yönetimi</small>
+            </h1>
+        </div>
+    </div>
+</div>
+<!-- end: TOOLBAR -->
+<!-- end: PAGE HEADER -->
+<!-- start: BREADCRUMB -->
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>
+                {{#link-to 'home.index'}}Ana Ekran{{/link-to}}
+            </li>
+            <li class="active">Gruplar</li>
+        </ol>
+    </div>
+</div>
+<!-- end: BREADCRUMB -->
+<!-- start: PAGE CONTENT -->
+<div class="panel panel-white">
+    <div class="panel-body">
+        <div class="col-md-12">
+            <div class="tabbable tabs-left faq" style="min-height:500px">
+                <ul id="myTab3" class="nav nav-tabs col-sm-2">
+                    <li class="active">
+                        <a href="#allContacts" data-toggle="tab" {{action "selectGroup" group}}>
+                                Hepsi <span class="badge badge-orange pull-right">{{allContacts.length}}</span>
+                            </a>
+                    </li>
+                    {{#each group in model}}
+                    <li class="">
+                        <a {{bind-attr href="group.domIdSelector" }} data-toggle="tab" {{action "selectGroup" group}}>
+                                {{group.name}} <span class="badge badge-orange pull-right" >{{group.contacts.length}}</span>
+                            </a>
+                    </li>
+                    {{/each}}
+                </ul>
+                <div class="tab-content panel-scroll ps-container" style="min-height:500px">
+                    <div class="tab-pane fade in active" id="allContacts">
+                        <h2>Tüm Kişier</h2>
+                        {{contact-list contacts=allContacts}}
+                    </div>
+                    {{#each group in model}}
+                    <div class="tab-pane fade in" {{bind-attr id="group.domId" }}>
+                        <h2>{{group.name}}</h2>
+                        {{contact-list contacts=group.contacts group=group}}
+                    </div>
+                    {{/each}}
+                </div>
+
+                <div class="btn-group">
+                    <a {{bind-attr class=":btn :btn-dark-grey :btn-lg " }} {{action "newGroup"}}><i class="fa fa-plus"></i></a>
+                    <a {{bind-attr class=":btn :btn-dark-grey :btn-lg " }} {{action "confirmDeleteGroup"}}><i class="fa fa-trash-o"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

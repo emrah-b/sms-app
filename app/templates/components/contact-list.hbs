@@ -1,0 +1,34 @@
+<div class="col-md-6 pull-right">
+    <div class="pull-right" id="sample_2_filter">
+        <label>
+            {{input type="text" class=":form-control :input-sm" placeholder="Kisi arama..." value=filter}}
+        </label>
+    </div>
+</div>
+<div class="table-responsive col-md-12">
+    <table class="table table-stripe table-hover">
+        <thead>
+            <tr>
+                <th class="sorting">Isim</th>
+                <th class="sorting">Cep telefonu</th>
+                <th class="hidden-xs">Ikinci cep telefonu</th>
+                <th class="hidden-xs">E-Mail</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each contact in filteredContacts}}
+            <tr>
+                <td>{{contact.fullName}}</td>
+                <td>{{contact.primaryPhoneNumber}}</td>
+                <td class="hidden-xs">{{contact.secondaryPhoneNumber}}</td>
+                <td class="hidden-xs">{{contact.primaryEmailAddress}}</td>
+                <td>
+                    <a {{bind-attr class=":btn :btn-default :pull-left hasValidGroup::hidden" }} {{action "confirmDeletion" contact}}><i class="fa fa-trash-o"></i></a>
+                    {{#link-to "edit-contact" contact.id class="btn btn-default pull-left"}}<i class="fa fa-edit"></i>{{/link-to}}
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

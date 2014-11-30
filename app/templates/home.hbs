@@ -1,0 +1,109 @@
+
+  <div class="main-wrapper">
+    <!-- start: TOPBAR -->
+    <header class="topbar navbar navbar-inverse navbar-fixed-top inner">
+      <!-- start: TOPBAR CONTAINER -->
+      <div class="container">
+        <div class="navbar-header">
+          <a class="sb-toggle-left hidden-md hidden-lg" href="#main-navbar">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- start: LOGO -->
+          <a class="navbar-brand" href="/">
+            KING MESAJ
+          </a>
+          <!-- end: LOGO -->
+        </div>
+        <div class="topbar-tools">
+          <!-- start: TOP NAVIGATION MENU -->
+          <ul class="nav navbar-right">
+            <!-- start: USER DROPDOWN -->
+            <li class="dropdown current-user">
+              <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                <span class="username hidden-xs">Mehmet Temiz</span> <i class="fa fa-caret-down "></i>
+              </a>
+              <ul class="dropdown-menu dropdown-dark">
+                <li>
+                  <a href="#" {{action "logout" on="click"}} >Çıkış yap</a>
+                </li>
+              </ul>
+            </li>
+            <!-- end: USER DROPDOWN -->
+          </ul>
+          <!-- end: TOP NAVIGATION MENU -->
+        </div>
+      </div>
+      <!-- end: TOPBAR CONTAINER -->
+    </header>
+    <!-- end: TOPBAR -->
+    <!-- start: PAGESLIDE LEFT -->
+    <a class="closedbar inner hidden-sm hidden-xs" href="#">
+    </a>
+    <nav id="pageslide-left" class="pageslide inner">
+        <div class="navbar-content">
+          <!-- start: SIDEBAR -->
+          <div class="main-navigation left-wrapper transition-left">
+            <div class="navigation-toggler hidden-sm hidden-xs">
+              <a href="#main-navbar" class="sb-toggle-left">
+              </a>
+            </div>
+            <!-- start: MAIN NAVIGATION MENU -->
+            {{#main-menu}}
+              {{#view 'nav-li'}}  
+                {{#link-to 'home.index'}}<i class="fa fa-dashboard"></i> <span class="title"> Ana Ekran </span>{{/link-to}}
+              {{/view}}
+              {{#view 'nav-li'}}  
+               {{#link-to 'contacts.index'}}<i class="fa fa-book"></i> <span class="title"> Kişiler </span>{{/link-to}}
+              {{/view}}
+              {{#view 'nav-li'}}  
+               {{#link-to 'groups'}}<i class="fa fa-users"></i> <span class="title"> Gruplar </span>{{/link-to}}
+              {{/view}}
+              {{#view 'nav-li'}}  
+               {{#link-to 'sms'}}<i class="fa fa-users"></i> <span class="title"> SMS Sihirbazi </span>{{/link-to}}
+              {{/view}}
+              {{#view 'nav-li'}}  
+               {{#link-to 'originators'}}<i class="fa fa-mail-forward"></i> <span class="title"> Kaynaklar </span>{{/link-to}}
+              {{/view}}
+            {{/main-menu}}
+
+            <!-- end: MAIN NAVIGATION MENU -->
+          </div>
+          <!-- end: SIDEBAR -->
+        </div>
+        <div class="slide-tools">
+          <div class="col-xs-6 text-right no-padding">
+            <a class="btn btn-sm log-out text-right" href="/logout">
+              <i class="fa fa-power-off"></i> Çıkış Yap
+            </a>
+          </div>
+        </div>
+      </nav>
+    <!-- end: PAGESLIDE LEFT -->
+    <!-- start: MAIN CONTAINER -->
+    <div class="main-container inner">
+      <!-- start: PAGE -->
+      <div class="main-content">
+        <div class="container">
+          {{outlet}}
+          </div>
+      </div>
+      <!-- end: PAGE -->
+    </div>
+    <!-- end: MAIN CONTAINER -->
+    <!-- start: FOOTER -->
+    <footer class="inner">
+      <div class="footer-inner">
+        <div class="pull-right">
+          <span class="go-top"><i class="fa fa-chevron-up"></i></span>
+        </div>
+      </div>
+    </footer>
+    <!-- end: FOOTER -->
+  </div>
+
+  <script>
+      jQuery(document).ready(function() {
+        //Index.init();
+        Main.init();
+      });
+  </script>

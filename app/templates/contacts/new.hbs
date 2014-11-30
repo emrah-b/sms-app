@@ -1,0 +1,74 @@
+<div class="toolbar row">
+   <div class="col-sm-6 hidden-xs">
+      <div class="page-header">
+         <h1>Kisiler
+            <small>SMS Kontakları ve grup yönetimi</small>
+         </h1>
+      </div>
+   </div>
+</div>
+<!-- end: TOOLBAR -->
+<!-- end: PAGE HEADER -->
+<!-- start: BREADCRUMB -->
+<div class="row">
+   <div class="col-md-12">
+      <ol class="breadcrumb">
+         <li>
+            {{#link-to 'home.index'}}Ana Ekran{{/link-to}}
+         </li>
+         <li>
+            {{#link-to 'contacts.index'}}Kisiler{{/link-to}}
+         </li>
+         <li class="active">Yeni Kisi Tanimlama</li>
+      </ol>
+   </div>
+</div>
+<!-- end: BREADCRUMB -->
+<div class="row">
+   <div class="col-md-12">
+      <div class="panel panel-white">
+         <div class="panel-heading">
+            <h4>Yeni Kisi
+               <span class="text-bold">Detaylari</span>
+            </h4>
+         </div>
+         <div class="panel-body">
+            <form class="form-horizontal">
+               {{form-field type="text" model=contact.firstName label="Adi"}}
+               {{form-field type="text" model=contact.lastName  label="Soyadi"}}
+               {{form-field type="text" model=contact.primaryPhoneNumber label="Telefon Numarasi"}}
+               {{form-field type="text" model=contact.secondaryPhoneNumber label="Ikinci Telefon Numarasi"}}
+               {{form-field type="email" model=contact.primaryEmailAddress label="E-mail Adresi"}}
+               {{form-field type="email" model=contact.secondaryEmailAddress label="Ikinci E-mail Adresi"}}
+               {{form-field type="date" model=contact.dateOfBirth label="Dogum Tarihi"}}
+               {{form-field type="textarea" model=contact.address label="Adres"}}
+               {{form-field type="checkbox" model=contact.canReceiveMessages label="Mesaja Acik mi"}}
+               {{#each binding in customFieldBindings}}
+                  {{form-field type=binding.customField.type model=binding.value label=binding.customField.label }}
+               {{/each}}
+               
+               <div class="form-group">
+                 <label class="col-sm-2 control-label" for="groupSelect">
+                    Gruplar
+                 </label>
+                 <div class="col-sm-9">
+                   {{select-2
+                     content=groupsContent
+                     value=memberOf
+                     multiple=true
+                     placeholder="Kisiyi eklemek istediginiz gruplar"
+                  }} 
+                 </div>
+               </div>
+               <div class="form-group">
+                  <div class="col-sm-2 col-sm-offset-8">
+                     <button class="btn btn-blue next-step btn-block" {{action "createContact" }}>
+                        Kaydet <i class="fa fa-arrow-circle-right"></i>
+                     </button>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,80 @@
+<!-- start: PAGE HEADER -->
+<!-- start: TOOLBAR -->
+<div class="toolbar row">
+  <div class="col-sm-6 hidden-xs">
+    <div class="page-header">
+      <h1>Mehmet Temiz <small>genel bakış &amp; kısayollar </small></h1>
+    </div>
+  </div>
+  
+</div>
+<!-- end: TOOLBAR -->
+<!-- end: PAGE HEADER -->
+<!-- start: PAGE CONTENT -->
+<div class="space20">
+
+</div>
+<div class=row>
+	<div class="col-md-6 col-lg-3 col-sm-6">
+		{{#link-to 'sms' class="btn btn-red btn-block"}}
+			<h1 class="text-extra-large"><i class="fa fa-envelope"></i> <span class="text-bold">SMS</span> </h1>
+			<h4 class="app-btn-subtitle">Mesaj gönderim sihirbazi</h4>
+		{{/link-to}}
+	</div>
+	<div class="col-md-6 col-lg-3 col-sm-6">
+		{{#link-to 'contacts' class="btn btn-blue btn-block"}}
+			<h1 class="text-extra-large"><i class="fa fa-bar-chart-o"></i> <span class="text-bold">Raporlar</span> </h1>
+			<h4 class="app-btn-subtitle">Raporlama islemleri</h4>
+		{{/link-to}}
+	</div>
+	<div class="col-md-6 col-lg-3 col-sm-6">
+		{{#link-to 'contacts' class="btn btn-yellow btn-block"}}
+			<h1 class="text-extra-large"><i class="fa fa-group"></i> <span class="text-bold">Kişiler</span> </h1>
+			<h4 class="app-btn-subtitle">Kişi ve grup yönetimi</h4>
+		{{/link-to}}
+	</div>
+	<div class="col-md-6 col-lg-3 col-sm-6">
+		{{#link-to 'contacts' class="btn btn-green btn-block"}}
+			<h1 class="text-extra-large"><i class="fa fa-try"></i> <span class="text-bold">Kredim</span> </h1>
+			<h4 class="app-btn-subtitle">Kredi yonetimi</h4>
+		{{/link-to}}
+	</div>
+</div>
+<div class="space20">
+
+</div>
+<div class="row">
+	<div class="col-sm-4">
+		<div class="panel panel-yellow">
+			<div class="panel-heading">
+				<h4 class="panel-title">Numaraya Hızlı <span class="text-bold">SMS</span></h4>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="form-field-1">
+						Başlık
+					</label>
+					<input type="text" placeholder="Başlık seçin" id="form-field-1" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="form-field-2">
+						Kime
+					</label>
+					<input type="text" placeholder="Grup ya da kişi seçin" id="form-field-1" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="form-field-23">
+						Mesaj
+					</label>
+					<textarea maxlength="50" id="form-field-23" class="form-control limited"></textarea>
+				</div>
+				<div class="form-group">
+					<div class="pull-right">
+						<a href="#sendSms" class="btn btn-md btn-transparent-black new-event tooltips"><i class="fa fa-send"></i>Gönder</a>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end: PAGE CONTENT-->

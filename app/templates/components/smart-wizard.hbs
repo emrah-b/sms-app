@@ -1,0 +1,15 @@
+<ul>
+    {{#each step in indexedSteps}}
+    <li>
+        <a {{bind-attr href=step.link}}>
+            <label class="stepNumber">{{step.index}}</label>
+            <span class="stepDesc">
+                {{step.index}}. Adım
+                <br />
+                <small>{{step.description}}</small>
+            </span>
+        </a>
+    </li>
+    {{/each}}
+</ul>
+{{yield}}
