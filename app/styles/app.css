@@ -69,3 +69,13 @@
   overflow: auto;
   position: relative;
 }
+
+.list-group-item-content {
+    display:inline-block;
+    width: 100%;
+}
+
+.date-input-container-large > input{
+    width: 100%;
+    height: 35px;
+}

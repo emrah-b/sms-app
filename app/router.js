@@ -23,6 +23,7 @@ Router.map(function() {
 		this.resource('reporting', {path: '/reporting'});
 
 		this.resource('sms', {path: '/sms'}, function() {
+			this.route("complete");
 		});
 	});
 

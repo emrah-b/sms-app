@@ -35,7 +35,7 @@ export default Ember.ArrayController.extend({
                 _this.get("selectedGroup").save();
 
                 Notify.success("Grup silindi");
-            })
+            });
         }
     }
 });

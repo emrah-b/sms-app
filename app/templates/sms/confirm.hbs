@@ -1,0 +1,70 @@
+<div class="col-sm-1"></div>
+<div class="form-group col-sm-10">
+	<ul class="list-group">
+	    <li class="list-group-item">
+	        <h5 style="font-weight:300" class="list-group-item-content">
+	        	<span class="col-sm-4">Seçilen Başlık</span> 
+	        	<span class=" col-sm-8 text-bold"> {{model.originator.title}}</span>
+	        </h5>
+	    </li>
+	    <li class="list-group-item">
+	        <h5 style="font-weight:300;width:100%;display:inline-block">
+	        	<span class="col-sm-4">Mesaj İçeriği </span> 
+	        	<span class=" col-sm-8 text-bold"> {{model.content}}</span>
+	        </h5>
+	    </li>
+	    <li class="list-group-item">
+	        <h5 style="font-weight:300;width:100%;display:inline-block">
+	        	<span class="col-sm-4"></span> 
+	        	<span class=" col-sm-8 text-bold"> {{model.content.length}} karakter, {{numberOfMessages}} mesaj</span>
+	        </h5>
+	    </li>
+	    <li class="list-group-item">
+	        <h5 style="font-weight:300;width:100%;display:inline-block">
+	        	<span class="col-sm-4">Mesaj Gönderim Tarihi</span> 
+	        	<span class=" col-sm-8 text-bold"> 
+	        		<span {{bind-attr class="model.sendDate::hidden"}}>{{date-string model.sendDate}}</span> 
+	        		<span {{bind-attr class="model.sendDate:hidden"}}>Hemen</span> 
+	        	</span>
+	        </h5>
+	    </li>
+	    <li class="list-group-item">
+	        <h5 style="font-weight:300;width:100%;display:inline-block">
+	        	<span class="col-sm-4">Mesaj Geçerlilik Süresi</span> 
+	        	<span class=" col-sm-8 text-bold"> 
+	        		<span {{bind-attr class="timeValidityText::hidden"}}>{{model.timeValidityText}}</span> 
+	        		<span {{bind-attr class="timeValidityText:hidden"}}>Varsayılan</span> 
+	        	</span>
+	        </h5>
+	    </li>
+	    <li class="list-group-item">
+	        <h5 style="font-weight:300;width:100%;display:inline-block">
+	        	<span class="col-sm-4">Mesaj Gönderim Hızı</span> 
+	        	<span class=" col-sm-8 text-bold"> 
+	        		<span {{bind-attr class="model.sendMessagesPerMin::hidden"}}>Dakikada {{model.sendMessagesPerMin}} mesaj </span> 
+	        		<span {{bind-attr class="model.sendMessagesPerMin:hidden"}}>Varsayılan</span> 
+
+	        	</span>
+	        </h5>
+	    </li>
+	    <li class="list-group-item">
+	        <h5 style="font-weight:300;width:100%;display:inline-block">
+	        	<span class="col-sm-4">Gönderilecek Numara Sayısı</span> 
+	        	<span class=" col-sm-8 text-bold"> {{model.list.length}} </span>
+	        </h5>
+	    </li>
+	    <li class="list-group-item">
+	        <span class="list-group-item-content">
+	        	<span class="col-sm-4"><h5 style="font-weight:300;width:100%;display:inline-block">Test Mesajı</h5></span> 
+	        
+	        	<span class="col-sm-6">
+	        		{{select-2 content=contacts value=testMessageContact multiple=false placeholder="Test mesajı için numara seçiniz" }}
+	        	</span>
+	        	<span class="col-sm-2">
+	        		<a class="btn btn-grey" {{action "sendTestMessage" testMessageContact target="view"}}>Gönder</a>
+	        	</span>
+        	</span>
+	    </li>
+	</ul>
+</div>
+<div class="col-sm-1"></div>
