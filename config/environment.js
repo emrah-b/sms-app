@@ -30,6 +30,8 @@ module.exports = function(environment) {
             'font-src': "'self' http://fonts.gstatic.com",
             'connect-src': "'self' *",
             'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com",
+            'report-uri': "http://www.google.com",
+            'img-src': "*"
         };
     }
 

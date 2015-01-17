@@ -1,0 +1,49 @@
+<!-- start: PAGE HEADER -->
+<!-- start: TOOLBAR -->
+<div class="toolbar row">
+    <div class="col-sm-6 hidden-xs">
+        <div class="page-header">
+            <h1>Kaynaklar
+                <small>SMS başlık bilgisi yönetimi</small>
+            </h1>
+        </div>
+    </div>
+
+</div>
+<!-- end: TOOLBAR -->
+<!-- end: PAGE HEADER -->
+<!-- start: BREADCRUMB -->
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>
+                {{#link-to 'home.index'}} Ana Ekran {{/link-to}}
+            </li>
+            <li class="active">Kaynaklar</li>
+        </ol>
+    </div>
+</div>
+<!-- end: BREADCRUMB -->
+<!-- start: PAGE CONTENT -->
+<div class="row">
+    <div class="panel panel-white">
+        <div class="panel-heading">
+            <h4> SMS <span class="text-bold">Basliklari </span></h4>
+        </div>
+        {{liste2.length}}
+        <div class="panel-body">
+            {{#form-for model}}
+                {{input firstName hint="Adinizi girin diye"}} 
+                {{input lastName as='text'}} 
+                {{input email}} 
+                {{input age}}
+                {{!input dateOfBirth as='datepicker' minDate="01/01/1950" maxDate="31/12/2016"}}
+                {{input chosenItem 
+                  as="select2" 
+                  collection=controller.liste
+                  multiple=true
+                  placeholder="Grup seçiniz" }}
+            {{/form-for}}
+        </div>
+    </div>
+</div>

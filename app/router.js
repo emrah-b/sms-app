@@ -25,6 +25,7 @@ Router.map(function() {
 		this.resource('sms', {path: '/sms'}, function() {
 			this.route("complete");
 		});
+  		this.resource('test-easyform', {path: "/test-easyform"});
 	});
 
 	this.route('login');

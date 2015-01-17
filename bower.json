@@ -14,7 +14,11 @@
     "ember-qunit-notifications": "0.0.4",
     "qunit": "~1.15.0",
     "pikaday": "~1.2.0",
-    "moment": "~2.8.3"
+    "moment": "~2.8.3",
+    "ember-easyForm": "http://builds.dockyard.com/ember-easyForm/latest/ember-easyForm.js",
+    "ember-validations": "http://builds.dockyard.com/ember-validations/latest/ember-validations.js",
+    "ember-i18n": "~2.9.1",
+    "datetimepicker": "~2.4.1"
   },
   "devDependencies": {
     "bootstrap": "~3.3.1",

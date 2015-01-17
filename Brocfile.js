@@ -20,6 +20,12 @@ app.import('bower_components/dcjqaccordion/js/jquery.cookie.js');
 app.import('bower_components/dcjqaccordion/js/jquery.dcjqaccordion.2.7.min.js');
 app.import('bower_components/bootbox/bootbox.js');
 app.import("bower_components/jQuery-Smart-Wizard/js/jquery.smartWizard.js");
+app.import("bower_components/ember-easyForm/index.js");
+app.import("bower_components/ember-validations/index.js");
+app.import("bower_components/ember-i18n/lib/i18n.js");
+app.import("bower_components/ember-i18n/lib/i18n-plurals.js");
+app.import("bower_components/datetimepicker/jquery.datetimepicker.js");
+app.import("bower_components/datetimepicker/jquery.datetimepicker.css");
 
 app.import("vendor/plugins/perfect-scrollbar/src/perfect-scrollbar.css");
 app.import("vendor/plugins/animate.css/animate.min.css");

@@ -141,6 +141,7 @@ export default Ember.Controller.extend({
                 newWorkOrder.set("content", _self.model.get("content"));
                 newWorkOrder.set("timeValidity", _self.model.get("timeValidity"));
                 newWorkOrder.set("sendMessagesPerMin", _self.model.get("sendMessagesPerMin"));
+                newWorkOrder.set("status", 0);
 
                 newWorkOrder.save();
 

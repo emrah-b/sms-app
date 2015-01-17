@@ -6,5 +6,7 @@ export default DS.Model.extend({
 	originator: DS.belongsTo("originator"),
 	content: DS.attr("string"),
 	timeValidity: DS.attr("string"),
-	sendMessagesPerMin: DS.attr("number")
+	sendMessagesPerMin: DS.attr("number"),
+	status: DS.attr("number"),
+	transactionId: DS.attr("number")
 });

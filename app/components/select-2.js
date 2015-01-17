@@ -17,7 +17,7 @@ var get = Ember.get;
  *      "optionValuePath=..."
  *
  *  - Content: Array of Objects used to present to the user for choosing the
- *    selected values. "content" cannot be an Array of Strings, the Objects are
+ *    selected values. "collection" cannot be an Array of Strings, the Objects are
  *    expected to have an "id" and a "text" property, which can be computed
  *    properties or just plain JavaScript Objects.
  */
@@ -95,7 +95,7 @@ export default Ember.Component.extend({
         options.query = function(query) {
             var select2 = this;
 
-            var filteredContent = self.get("content").reduce(function(results, item) {
+            var filteredContent = self.get("collection").reduce(function(results, item) {
                 // items may contain children, so filter them, too
                 var filteredChildren = [];
 
@@ -137,16 +137,16 @@ export default Ember.Component.extend({
  
       When there are keys that can not be matched to objects, the select2 input
       will be disabled and a warning will be printed on the console.
-      This is important in case the "content" has yet to be loaded but the
+      This is important in case the "collection" has yet to be loaded but the
       "value" is already set and must not be accidentally changed because the
       inout cannot yet display all the options that are required.
  
       To disable this behaviour, remove those keys from "value" that can't be
-      matched by objects from "content".
+      matched by objects from "collection".
      */
         options.initSelection = function(element, callback) {
             var value = element.val(),
-                content = self.get("content"),
+                content = self.get("collection"),
                 multiple = self.get("multiple"),
                 optionValuePath = self.get("optionValuePath");
 
