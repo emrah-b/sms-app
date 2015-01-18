@@ -86,3 +86,26 @@
     -moz-osx-font-smoothing: grayscale;
     padding-right: 5px;
 }
+th.sortable:hover, th.sort_asc:hover, th.sort_desc:hover {
+    cursor: pointer;
+}
+th.sortable::after, th.sort_asc::after, th.sort_desc::after {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-right: 5px;
+    float: right;
+}
+th.sortable::after {
+    content: "\F0DC";
+}
+th.sort_asc::after {
+    content: "\F0DE";
+}
+th.sort_desc::after {
+    content: "\F0DD";
+}

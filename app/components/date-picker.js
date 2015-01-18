@@ -19,7 +19,7 @@ export default Ember.Component.extend({
                 });
             },
             firstDay: 1,
-            format: this.get('format') || 'DD.MM.YYYY'
+            format: this.get('format') || 'LL'
         };
 
         options.i18n = {
@@ -33,7 +33,7 @@ export default Ember.Component.extend({
         var pikaday = new Pikaday(options);
 
         this.set('pikaday', pikaday);
-        if(this.get('pikaday')) this.get('pikaday').setDate(this.get('value'), true);
+        this.get('pikaday').setDate(this.get('value'), true);
 
     }.on('didInsertElement'),
 

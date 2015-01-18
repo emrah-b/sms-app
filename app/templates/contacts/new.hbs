@@ -33,41 +33,33 @@
             </h4>
          </div>
          <div class="panel-body">
-            <form class="form-horizontal">
-               {{form-field type="text" model=contact.firstName label="Adi"}}
-               {{form-field type="text" model=contact.lastName  label="Soyadi"}}
-               {{form-field type="text" model=contact.primaryPhoneNumber label="Telefon Numarasi"}}
-               {{form-field type="text" model=contact.secondaryPhoneNumber label="Ikinci Telefon Numarasi"}}
-               {{form-field type="email" model=contact.primaryEmailAddress label="E-mail Adresi"}}
-               {{form-field type="email" model=contact.secondaryEmailAddress label="Ikinci E-mail Adresi"}}
-               {{form-field type="date" model=contact.dateOfBirth label="Dogum Tarihi"}}
-               {{form-field type="textarea" model=contact.address label="Adres"}}
-               {{form-field type="checkbox" model=contact.canReceiveMessages label="Mesaja Acik mi"}}
+            <div class="panel-body">
+            {{#form-for model wrapper="horizontal-form"}}
+               {{input firstName label="Adı"}}
+               {{input lastName label="Soyadı"}}
+               {{input primaryPhoneNumber label="Telefon Numarası" as="masked" mask="0 999 999 99 99"}}
+               {{input secondaryPhoneNumber label="İkincil Telefon Numarası" as="masked" mask="0 999 999 99 99"}}
+               {{input primaryEmailAddress label="E-Mail"}}
+               {{input secondaryEmailAddress label="Ikincil E-Mail"}}
+               {{input dateOfBirth as="datepicker" label="Doğum Tarihi" format="LL"}}
+               {{input canReceiveMessages as="checkbox" label="Mesaj alabilir"}}
                {{#each binding in customFieldBindings}}
-                  {{form-field type=binding.customField.type model=binding.value label=binding.customField.label }}
+                  {{input binding.value asBinding="binding.inputType" labelBinding="binding.customField.label"}}
                {{/each}}
-               
+               {{input memberOf as="select2" collection=controller.groups placeholder="Kişiyi eklemek istediğiniz gruplar" multiple=true optionLabelPath="name"}}
                <div class="form-group">
-                 <label class="col-sm-2 control-label" for="groupSelect">
-                    Gruplar
-                 </label>
-                 <div class="col-sm-9">
-                   {{select-2
-                     content=groupsContent
-                     value=memberOf
-                     multiple=true
-                     placeholder="Kisiyi eklemek istediginiz gruplar"
-                  }} 
-                 </div>
-               </div>
-               <div class="form-group">
-                  <div class="col-sm-2 col-sm-offset-8">
+                  <div class="col-sm-2 col-sm-offset-2">
+                     <button class="btn btn-red next-step btn-block" {{action "cancel" }}>
+                        <i class="fa fa-arrow-circle-left"></i> İptal
+                     </button>
+                  </div>
+                  <div class="col-sm-2 col-sm-offset-5">
                      <button class="btn btn-blue next-step btn-block" {{action "createContact" }}>
                         Kaydet <i class="fa fa-arrow-circle-right"></i>
                      </button>
                   </div>
                </div>
-            </form>
+            {{/form-for}}
          </div>
       </div>
    </div>

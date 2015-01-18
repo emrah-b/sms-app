@@ -3,32 +3,26 @@ import Notify from 'ember-notify';
 
 export
 default Ember.Controller.extend({
-    _groups: function() {
+    groups: function() {
         return this.store.findAll("group");
     }.property(),
     _customFields: function() {
         return this.store.find("custom-field");
     }.property(),
-    groupsContent: function() {
-        return this.get("_groups").map(function(i) {
-            return Ember.Object.create({
-                id: i.get("id"),
-                text: i.get("name")
-            });
-        });
-    }.property("_groups.@each"),
     customFieldBindings: function() {
         return this.get("_customFields").map(function(i) {
             return {
                 customField: i,
-                value: ""
+                value: "",
+                inputType: (i.get("type") === "date") ? "datepicker" : ""
             };
         });
     }.property("_customFields.@each"),
     updateGroupMemberships: function() {
-        var contact = this.get("contact");
+        var contact = this.get("model");
         var groups = this.get("memberOf");
         var _self = this;
+
         if (groups) {
             groups.forEach(function(group) {
                 contact.get("groups").then(function(groups) {
@@ -48,7 +42,7 @@ default Ember.Controller.extend({
     }.observes("customFieldBindings.@each.value"),
     actions: {
         createContact: function() {
-            var contact = this.get("contact");
+            var contact = this.get("model");
             var customFieldBindings = this.get("customFieldBindings");
             var _self = this;
 
@@ -68,6 +62,9 @@ default Ember.Controller.extend({
                 _self.transitionToRoute('contacts');
             });
 
+        },
+        cancel: function(){
+            this.transitionToRoute("contacts");
         }
     }
 });

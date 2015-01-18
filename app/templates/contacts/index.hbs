@@ -71,18 +71,18 @@
                                  <a {{action "selectAll"}}><i class="fa fa-square fa-2x"></i></a> 
                               {{/if}}
                            </th>
-                           <th class="sorting">Isim</th>
-                           <th class="sorting">Cep telefonu</th>
+                           <th {{bind-attr class=":sortable asc.fullName:sort_asc desc.fullName:sort_desc"}} {{action 'sortBy' 'fullName'}}>Isim</th>
+                           <th {{bind-attr class=":sortable asc.primaryPhoneNumber:sort_asc desc.primaryPhoneNumber:sort_desc"}} {{action 'sortBy' 'primaryPhoneNumber'}}>Cep telefonu</th>
                            <th class="hidden-xs">Ikinci cep telefonu</th>
                            <th class="hidden-xs">E-Mail</th>
                            <th></th>
                         </tr>
                      </thead>
                      <tbody>
-                        {{#each contact in filteredContent}}
+                        {{#each contact in slicedContent}}
                            <tr>
                               <td class="center">{{eb-checkbox checked=contact.selected}}</td>
-                              <td>{{contact.fullName}}</td>
+                              <td>{{contact.id}} - {{contact.fullName}}</td>
                               <td>{{contact.primaryPhoneNumber}}</td>
                               <td class="hidden-xs">{{contact.secondaryPhoneNumber}}</td>
                               <td class="hidden-xs">{{contact.primaryEmailAddress}}</td>
@@ -98,6 +98,18 @@
                   </table>
                </div>
             </div>
+            <div class="row">
+                  <div class="col-md-5">Toplam {{filteredContent.length}} kayıt bulundu</div>
+                  <div class="col-md-7">
+                     <ul class="pagination">
+                        <li class="" {{action "setPage" 1}}><a>İlk</a></li>
+                        <li class="" {{action "prevPage"}}><a>Önceki</a></li>
+                        <li class=""><span>{{view Ember.Select content=pageList value=currentPage}}/{{maxNumberOfPages}}</span></li>
+                        <li class="" {{action "nextPage"}}><a>Sonraki</a></li>
+                        <li class="" {{action "lastPage"}}><a>Son</a></li>
+                  </div>
+                  
+               </div>
          </div>
       </div>
    </div>
