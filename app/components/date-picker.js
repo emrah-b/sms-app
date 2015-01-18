@@ -1,9 +1,12 @@
 import Ember from 'ember';
 
+var Pikaday = window.Pikaday;
+
 export default Ember.Component.extend({
     tagName: 'input',
-    change: function(x) {
-        if (!this.get('pikaday').getDate()) this.set('value', null);
+    change: function() {
+
+        if (!this.get('pikaday').getDate() && this.get('value')) this.set('value', null);
     },
     setupPikaday: function() {
         var that = this;
@@ -30,7 +33,7 @@ export default Ember.Component.extend({
         var pikaday = new Pikaday(options);
 
         this.set('pikaday', pikaday);
-        this.get('pikaday').setDate(this.get('value'), true);
+        if(this.get('pikaday')) this.get('pikaday').setDate(this.get('value'), true);
 
     }.on('didInsertElement'),
 

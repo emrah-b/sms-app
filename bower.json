@@ -1,35 +1,35 @@
 {
-    "name": "kingmesaj",
-    "dependencies": {
-        "handlebars": "~1.3.0",
-        "jquery": "^1.11.1",
-        "ember": "1.7.0",
-        "ember-data": "1.0.0-beta.10",
-        "ember-resolver": "~0.1.7",
-        "loader.js": "stefanpenner/loader.js#1.0.1",
-        "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.3",
-        "ember-cli-test-loader": "rwjblue/ember-cli-test-loader#0.0.4",
-        "ember-load-initializers": "stefanpenner/ember-load-initializers#0.0.2",
-        "ember-qunit": "0.1.8",
-        "ember-qunit-notifications": "0.0.4",
-        "qunit": "~1.15.0",
-        "bootbox": "~4.3.0"
-    },
-    "devDependencies": {
-        "bootstrap": "~3.3.1",
-        "moment": "~2.8.3",
-        "open-sans": "~1.1.0",
-        "ember-notify": "~1.2.0",
-        "ember-components": "~0.2.0",
-        "select2": "~3.5.2",
-        "dcjqaccordion": "~2.7.1",
-        "bootbox": "~4.3.0",
-        "jQuery-Smart-Wizard": "~3.3.1",
-        "ember-easyForm": "http://builds.dockyard.com/ember-easyForm/latest/ember-easyForm.js",
-        "ember-validations": "http://builds.dockyard.com/ember-validations/latest/ember-validations.js",
-        "ember-i18n": "~2.9.1",
-        "datetimepicker": "~2.4.1",
-        "jquery.inputmask": "3.1.49",
-        "pikaday": "~1.3.1"
-    }
+  "name": "kingmesaj",
+  "dependencies": {
+    "handlebars": "~1.3.0",
+    "jquery": "^1.11.1",
+    "ember": "1.7.0",
+    "ember-data": "1.0.0-beta.10",
+    "ember-resolver": "~0.1.7",
+    "loader.js": "stefanpenner/loader.js#1.0.1",
+    "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.3",
+    "ember-cli-test-loader": "rwjblue/ember-cli-test-loader#0.0.4",
+    "ember-load-initializers": "stefanpenner/ember-load-initializers#0.0.2",
+    "ember-qunit": "0.1.8",
+    "ember-qunit-notifications": "0.0.4",
+    "qunit": "~1.15.0",
+    "font-awesome": "~4.2.0"
+  },
+  "devDependencies": {
+    "bootstrap": "~3.3.1",
+    "moment": "~2.8.3",
+    "open-sans": "~1.1.0",
+    "ember-notify": "~1.2.0",
+    "ember-components": "~0.2.0",
+    "select2": "~3.5.2",
+    "dcjqaccordion": "~2.7.1",
+    "bootbox": "~4.3.0",
+    "jQuery-Smart-Wizard": "~3.3.1",
+    "ember-easyForm": "http://builds.dockyard.com/ember-easyForm/latest/ember-easyForm.js",
+    "ember-validations": "http://builds.dockyard.com/ember-validations/latest/ember-validations.js",
+    "ember-i18n": "~2.9.1",
+    "datetimepicker": "~2.4.1",
+    "jquery.inputmask": "3.1.49",
+    "pikaday": "~1.3.1"
+  }
 }

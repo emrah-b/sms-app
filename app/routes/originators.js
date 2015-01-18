@@ -17,7 +17,8 @@ default Ember.Route.extend({
             }).then(function(matchingOriginators) {
                 if (matchingOriginators.get("length") > 0) {
                     _self.controller.set("invalidTitle", true);
-                    Notify.error("Varolan bir basligi ekleyemezsiniz!")
+                    
+                    Notify.error("Varolan bir basligi ekleyemezsiniz!");
                     return;
                 }
                 if (newTitle == null || newTitle.search(/^[a-zA-Z0-9]{2,20}$/) === -1) {

@@ -100,7 +100,7 @@ export default Ember.Controller.extend({
         this.set("userHasEnteredData", false);
     },
     actions: {
-        finish: function(controller, model) {
+        finish: function() {
             var _self = this;
 
             bootbox.confirm("Mesajınızı var olan ayarlarla kaydetmek istediğinize emin misiniz?", function(result) {

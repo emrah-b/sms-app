@@ -21,7 +21,7 @@ Router.map(function() {
 		
 		this.resource('balance', {path: '/balance'});
 		this.resource('reports', {path: '/reports'}, function () {
-			this.resource('report', {path: ':id'})
+			this.resource('report', {path: ':id'});
 		});
 
 		

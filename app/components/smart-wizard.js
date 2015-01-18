@@ -17,7 +17,7 @@ export default Ember.Component.extend({
             steps[i].index = i + 1;
             steps[i].link = "#step-" + (i + 1);
             steps[i].domId = "step-" + (i + 1);
-            steps[i].selected = i == 0;
+            steps[i].selected = i === 0;
         }
 
         return steps;

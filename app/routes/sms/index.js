@@ -33,7 +33,7 @@ export default Ember.Route.extend({
                 return false;
 
             } else {
-                this.controller.set(model, createViewModel());
+                this.controller.set("model", this.createViewModel());
                 return true;
             }
 

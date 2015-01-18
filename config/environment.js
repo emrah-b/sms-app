@@ -48,7 +48,14 @@ module.exports = function(environment) {
     }
 
     if (environment === 'production') {
-
+        // ENV.contentSecurityPolicy = {
+        //     'script-src': "'self' 'unsafe-eval' http://*:35729",
+        //     'font-src': "'self' http://fonts.gstatic.com",
+        //     'connect-src': "'self' *",
+        //     'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com",
+        //     'report-uri': "http://www.google.com",
+        //     'img-src': "*"
+        // };
     }
 
     return ENV;
