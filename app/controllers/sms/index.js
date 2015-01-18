@@ -1,42 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    _groups: function() {
+    groups: function() {
         return this.store.findAll("group");
     }.property(),
-    groups: function() {
-        return this.get("_groups").map(function(i) {
-            return Ember.Object.create({
-                id: i.get("id"),
-                text: i.get("name"),
-                group: i
-            });
-        });
-    }.property("_groups.@each"),
-    _contacts: function() {
+    contacts: function() {
         return this.store.findAll("contact");
     }.property(),
-    contacts: function() {
-        return this.get("_contacts").map(function(i) {
-            return Ember.Object.create({
-                id: i.get("id"),
-                text: i.get("fullName"),
-                contact: i
-            });
-        });
-    }.property("_contacts.@each"),
-    _originators: function() {
+    originators: function() {
         return this.store.findAll("originator");
     }.property(),
-    originators: function() {
-        return this.get("_originators").map(function(i) {
-            return Ember.Object.create({
-                id: i.get("id"),
-                text: i.get("title"),
-                originator: i
-            });
-        });
-    }.property("_originators.@each"),
     steps: function() {
         return [{
             title: "Liste oluşturma",
@@ -66,17 +39,17 @@ export default Ember.Controller.extend({
         var addedContacts = this.model.get("addedContacts");
 
         if (addedContacts) {
-            addedContacts.forEach(function(c) {
+            addedContacts.forEach(function(contact) {
                 list.addObject({
-                    number: c.contact.get("primaryPhoneNumber"),
-                    name: c.contact.get("fullName")
+                    number: contact.get("primaryPhoneNumber"),
+                    name: contact.get("fullName")
                 });
             });
         }
 
         if (addedGroups) {
-            addedGroups.forEach(function(g) {
-                g.group.get("contacts").forEach(function(contact) {
+            addedGroups.forEach(function(group) {
+                group.get("contacts").forEach(function(contact) {
                     if (list.anyBy("number", contact.get("primaryPhoneNumber"))) return;
 
                     list.addObject({

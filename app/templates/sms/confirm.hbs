@@ -58,7 +58,7 @@
 	        	<span class="col-sm-4"><h5 style="font-weight:300;width:100%;display:inline-block">Test Mesajı</h5></span> 
 	        
 	        	<span class="col-sm-6">
-	        		{{select-2 content=contacts value=testMessageContact multiple=false placeholder="Test mesajı için numara seçiniz" }}
+	        		{{select-2 collection=contacts value=testMessageContact multiple=false placeholder="Test mesajı için numara seçiniz" optionLabelPath="fullName"}}
 	        	</span>
 	        	<span class="col-sm-2">
 	        		<a class="btn btn-grey" {{action "sendTestMessage" testMessageContact target="view"}}>Gönder</a>

@@ -24,70 +24,7 @@ var Contact = DS.Model.extend({
     }.property('firstName', 'lastName')
 });
 
-Contact.reopenClass({
-    FIXTURES: [{
-        id: 1,
-        firstName: 'Ali',
-        lastName: 'Demirkan',
-        primaryPhoneNumber: '0530 487 54 31',
-        secondaryPhoneNumber: '',
-        primaryEmailAddress: 'ali.d@gmail.com',
-        secondaryEmailAddress: '',
-        dateOfBirth: '1984-07-31',
-        address: 'Yenisehir cad. No: 23/12 Dikimevi/ANKARA',
-        canReceiveMessages: false,
-        groups: [1,3],
-        customFieldBindings: [1,2]
-    }, {
-        id: 2,
-        firstName: 'Zeynep',
-        lastName: 'Demirkan',
-        primaryPhoneNumber: '0530 487 54 32',
-        secondaryPhoneNumber: '',
-        primaryEmailAddress: 'ali.d@gmail.com',
-        secondaryEmailAddress: '',
-        dateOfBirth: '1984-07-31',
-        address: 'Yenisehir cad. No: 23/12 Dikimevi/ANKARA',
-        canReceiveMessages: false,
-        groups: [1, 2]
-    }, {
-        id: 3,
-        firstName: 'Mutlu',
-        lastName: 'Demirkan',
-        primaryPhoneNumber: '0530 487 54 33',
-        secondaryPhoneNumber: '',
-        primaryEmailAddress: 'ali.d@gmail.com',
-        secondaryEmailAddress: '',
-        dateOfBirth: '1984-07-31',
-        address: 'Ataturk cad. No: 23/12 Cankaya/ANKARA',
-        canReceiveMessages: true,
-        groups: [2,4]
-    }, {
-        id: 4,
-        firstName: 'Servet',
-        lastName: 'Demirkan',
-        primaryPhoneNumber: '0538 487 54 34',
-        secondaryPhoneNumber: '',
-        primaryEmailAddress: 'ali.d@gmail.com',
-        secondaryEmailAddress: '',
-        dateOfBirth: '1984-07-31',
-        address: 'Reyhanli Sk. No: 23/4 Sarikamis/KARS',
-        canReceiveMessages: false,
-        groups: [1]
-    }, {
-        id: 5,
-        firstName: 'Bilge',
-        lastName: 'Kose',
-        primaryPhoneNumber: '0 530 237 54 35',
-        secondaryPhoneNumber: '',
-        primaryEmailAddress: 'ali.d@gmail.com',
-        secondaryEmailAddress: '',
-        dateOfBirth: '1984-07-31',
-        address: 'Yenisehir cad. No: 23/12 Dikimevi/ANKARA',
-        canReceiveMessages: false,
-        groups: []
-    }]
-});
+
 
 export
 default Contact;

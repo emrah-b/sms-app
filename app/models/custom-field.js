@@ -5,12 +5,6 @@ var CustomField = DS.Model.extend({
     type: DS.attr("string")
 });
 
-CustomField.reopenClass({
-	FIXTURES: [
-		{id: 1, label: "Evlilik Yildonumu", type: "date"},
-		{id: 2, label: "En Sevdigi Renk", type: "text"}
 
-	]
-});
 
 export default CustomField;

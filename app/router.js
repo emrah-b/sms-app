@@ -20,7 +20,11 @@ Router.map(function() {
 		this.resource("edit-contact", {path: "contact/:id/edit"});
 		
 		this.resource('balance', {path: '/balance'});
-		this.resource('reporting', {path: '/reporting'});
+		this.resource('reports', {path: '/reports'}, function () {
+			this.resource('report', {path: ':id'})
+		});
+
+		
 
 		this.resource('sms', {path: '/sms'}, function() {
 			this.route("complete");

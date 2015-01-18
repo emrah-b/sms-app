@@ -1,0 +1,20 @@
+import Contact from "../models/contact";
+import CustomField from "../models/custom-field";
+import CustomFieldBinding from "../models/custom-field-binding";
+
+var contactFixtures = %contacts%;
+
+var customFieldFixtures = %customFields%;
+
+var customFieldBindings = %customFieldBindings%;
+
+export function initialize(/* container, application */) {
+  Contact.reopenClass({ FIXTURES: contactFixtures});
+  CustomField.reopenClass({ FIXTURES: customFieldFixtures});
+  CustomFieldBinding.reopenClass({ FIXTURES: customFieldBindings});
+}
+
+export default {
+  name: 'fixture-loaders',
+  initialize: initialize
+};

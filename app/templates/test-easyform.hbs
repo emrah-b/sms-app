@@ -30,19 +30,23 @@
         <div class="panel-heading">
             <h4> SMS <span class="text-bold">Basliklari </span></h4>
         </div>
-        {{liste2.length}}
+
+
         <div class="panel-body">
-            {{#form-for model}}
+            {{#form-for model wrapper="horizontal-form"}}
                 {{input firstName hint="Adinizi girin diye"}} 
                 {{input lastName as='text'}} 
-                {{input email}} 
+                {{input email}}
+                {{input phone as="masked" label="phone" mask="999-aaa-***" }} 
                 {{input age}}
-                {{!input dateOfBirth as='datepicker' minDate="01/01/1950" maxDate="31/12/2016"}}
+                {{input dateOfBirth as='datepicker' format="LL"}}
                 {{input chosenItem 
                   as="select2" 
                   collection=controller.liste
                   multiple=true
-                  placeholder="Grup seçiniz" }}
+                  placeholder="Grup seçiniz"
+                  optionLabelPath="label" }}
+                {{input isFaggot as="checkbox"}}
             {{/form-for}}
         </div>
     </div>

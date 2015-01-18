@@ -28,7 +28,6 @@ export default Ember.Route.extend({
     },
     actions: {
         willTransition: function(transition) {
-            var _transition = transition;
             if (this.controller.get('userHasEnteredData') && !confirm("Mesaj kaydedilmedi, çıkmak istediğinize emin misiniz?")) {
                 transition.abort();
                 return false;

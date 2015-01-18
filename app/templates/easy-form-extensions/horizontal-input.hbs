@@ -1,20 +1,14 @@
 {{label-field propertyBinding="view.property" textBinding="view.label"}}
 
-{{#if view.hint}}
-    <div class="col-sm-7">
-        {{input-field propertyBinding="view.property" inputOptionsBinding="view.inputOptionsValues" class="form-control"}}
-        {{#if view.showError}}
-            {{error-field propertyBinding="view.property"}}
-        {{/if}}
-    </div>
-    {{hint-field propertyBinding="view.property" textBinding="view.hint"}}
-
-{{else}}
-    <div class="col-sm-9">
-        {{input-field propertyBinding="view.property" inputOptionsBinding="view.inputOptionsValues" class="form-control"}}
-
-        {{#if view.showError}}
-            {{error-field propertyBinding="view.property"}}
-        {{/if}}
-    </div>
-{{/if}}
+<div class="col-sm-9">
+    <span {{bind-attr class="view.hint:input-help"}}>
+    {{input-field propertyBinding="view.property" inputOptionsBinding="view.inputOptionsValues" class="form-control"}}
+    
+    {{#if view.hint}}
+        {{help-button-popover textBinding="view.hint"}}
+    {{/if}}
+    </span>
+    {{#if view.showError}}
+        {{error-field propertyBinding="view.property"}}
+    {{/if}}
+</div>

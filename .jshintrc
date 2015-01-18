@@ -4,11 +4,15 @@
     "window",
     "-Promise",
     "$",
-    "jquery"
+    "jquery",
+    "Ember",
+    "Em",
+    "bootbox",
+    "moment"
   ],
   "browser" : true,
   "boss" : true,
-  "curly": true,
+  "curly": false,
   "debug": false,
   "devel": true,
   "eqeqeq": true,

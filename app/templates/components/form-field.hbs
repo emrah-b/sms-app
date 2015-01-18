@@ -7,8 +7,7 @@
          {{input type="checkbox" checked=model}}
       {{else}}
          {{#if isDate}}
-            {{!tr-datepicker date=model valueFormat='DD/MM/YYYY' outputFormat="LL" allowBlank=true}}
-            {{pikaday-input value=model format="LL" yearRange=3}}
+            {{date-picker value=model format="LL" yearRange=3}}
          {{else}}
                {{#if isTextArea}}
                   {{textarea value=model class="form-control"}}

@@ -4,6 +4,7 @@ export default DS.Model.extend(Ember.Validations.Mixin, {
   firstName: DS.attr(),
   lastName: DS.attr(),
   email: DS.attr(),
+  phone: DS.attr(),
   age: DS.attr("number"),
   chosenItem: DS.attr(),
   dateOfBirth: DS.attr("date"),
@@ -34,6 +35,9 @@ export default DS.Model.extend(Ember.Validations.Mixin, {
     },
     dateOfBirth: {
     	presence: true
+    },
+    phone: {
+      presence: true
     }
   }
 });

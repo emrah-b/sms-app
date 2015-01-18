@@ -26,11 +26,12 @@ export default Ember.Component.extend({
     classNames: ["form-control"],
     classNameBindings: ["inputSize"],
     attributeBindings: ["style"],
-    style: "display: hidden;",
+    style: "display: hidden;min-width:250px",
 
     // Bindings that may be overwritten in the template
     inputSize: "input-md",
     optionValuePath: null,
+    optionLabelPath: "text",
     placeholder: null,
     multiple: false,
 
@@ -58,7 +59,7 @@ export default Ember.Component.extend({
                 return;
             }
             var id = get(item, "id"),
-                text = get(item, "text"),
+                text = get(item, self.get("optionLabelPath")),
                 description = get(item, "description"),
                 output = Ember.Handlebars.Utils.escapeExpression(text);
 
@@ -81,7 +82,7 @@ export default Ember.Component.extend({
                 return;
             }
 
-            var text = get(item, "text");
+            var text = get(item, self.get("optionLabelPath"));
 
             // escape text unless it's passed as a Handlebars.SafeString
             return Ember.Handlebars.Utils.escapeExpression(text);
@@ -101,7 +102,7 @@ export default Ember.Component.extend({
 
                 if (item.children) {
                     filteredChildren = item.children.reduce(function(children, child) {
-                        if (select2.matcher(query.term, get(child, "text"))) {
+                        if (select2.matcher(query.term, get(child, self.get("optionLabelPath")))) {
                             children.push(child);
                         }
                         return children;
@@ -109,7 +110,7 @@ export default Ember.Component.extend({
                 }
 
                 // apply the regular matcher
-                if (select2.matcher(query.term, get(item, "text"))) {
+                if (select2.matcher(query.term, get(item, self.get("optionLabelPath")))) {
                     // keep this item either if itself matches
                     results.push(item);
                 } else if (filteredChildren.length) {

@@ -11,6 +11,9 @@ app.import("bower_components/select2/select2-spinner.gif");
 app.import("bower_components/bootstrap/dist/js/bootstrap.min.js");
 app.import('bower_components/moment/min/moment.min.js');
 app.import('bower_components/moment/locale/tr.js');
+app.import('bower_components/pikaday/pikaday.js');
+app.import('bower_components/pikaday/css/pikaday.css');
+
 app.import('bower_components/ic-styled/main.js');
 app.import('bower_components/ember-utils/dist/globals/main.js');
 app.import('bower_components/ember-components/dist/globals/main.js');
@@ -26,6 +29,7 @@ app.import("bower_components/ember-i18n/lib/i18n.js");
 app.import("bower_components/ember-i18n/lib/i18n-plurals.js");
 app.import("bower_components/datetimepicker/jquery.datetimepicker.js");
 app.import("bower_components/datetimepicker/jquery.datetimepicker.css");
+app.import("bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js");
 
 app.import("vendor/plugins/perfect-scrollbar/src/perfect-scrollbar.css");
 app.import("vendor/plugins/animate.css/animate.min.css");
@@ -38,5 +42,7 @@ app.import("vendor/plugins/jquery.sparkline/jquery.sparkline.js");
 
 app.import('vendor/js/index.js');
 app.import('vendor/js/main.js');
+
+debugger;
 
 module.exports = app.toTree();

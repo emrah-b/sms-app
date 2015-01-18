@@ -1,0 +1,62 @@
+<div class="toolbar row">
+    <div class="col-sm-6 hidden-xs">
+        <div class="page-header">
+            <h1>Raporlar
+                <small>Rapor ve grafikler</small>
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        {{#unless reportDetail}}
+            <ol class="breadcrumb">
+                <li>
+                    {{#link-to 'home.index'}} Ana Ekran {{/link-to}}
+                </li>
+                <li class="active">Raporlar</li>
+            </ol>
+        {{else}}
+            <ol class="breadcrumb">
+                <li>
+                    {{#link-to 'home.index'}} Ana Ekran {{/link-to}}
+                </li>
+                <li>
+                    {{#link-to 'reports'}} Raporlar {{/link-to}}
+                </li>
+                <li class="active">Rapor detay</li>
+            </ol>
+        {{/unless}}
+    </div>
+</div>
+<div class="row">
+    <div {{bind-attr class=":panel :panel-white reportDetail:hidden:"}}>
+        <div class="panel-heading">
+            <h4> Rapor <span class="text-bold">Seçimi </span></h4>
+        </div>
+        <div class="panel-body">
+            {{#form-for reportCriteria wrapper="horizontal-form"}}
+                {{input reportType label="Rapor tipi" as="select2" collection=controller.reportTypes placeholder="Rapor tipi seçiniz"}}
+                {{input startDate as="datepicker" label="Başlangıç"}}
+                {{input endDate as="datepicker" label="Son"}}
+                <button class="btn btn-primary" {{action "submit"}}>Getir</button>
+            {{/form-for}}
+        </div>
+    </div>
+    <div {{bind-attr class=":panel :panel-white reportDetail::hidden"}}>
+        <div class="panel-heading">
+            <h4> Rapor <span class="text-bold">Seçimi </span></h4>
+        </div>
+        <div class="panel-body">
+            {{#form-for reportCriteria wrapper="inline-form"}}
+                {{input reportType label="Rapor tipi" as="select2" collection=controller.reportTypes placeholder="Rapor tipi seçiniz"}}
+                {{input startDate as="datepicker" label="Başlangıç"}}
+                {{input endDate as="datepicker" label="Son"}}
+                <button class="btn btn-primary" {{action "submit"}}>Getir</button>
+            {{/form-for}}
+        </div>
+    </div>
+</div>
+{{outlet}}
+
+
