@@ -1,5 +1,3 @@
-import InputMaskComponent from 'ember-inputmask/components/input-mask';
-
 export function initialize( /* container, application */ ) {
     Ember.EasyForm.Input.reopen({
         inputOptions: ["maskedValue", "mask"],
