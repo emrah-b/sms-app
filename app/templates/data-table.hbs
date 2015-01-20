@@ -1,0 +1,50 @@
+<div {{bind-attr class=":row view.searchBar::hidden"}}>
+    <div class="col-md-12 pull-right">
+        <div class="pull-right" id="sample_2_filter">
+            <label>
+                {{input type="text" class=":form-control :input-sm" placeholder="Kisi arama..." value=filter}}
+            </label>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="table-responsive col-md-12">
+        <table class="table table-stripe table-hover">
+            <thead>
+                <tr>
+                    {{#each column in view.columns}}
+                        <th {{bind-attr class="column.sortable:sortable asc[column.property]:sort_asc desc[column.property]:sort_desc"}} {{action 'sortBy' column.property target="view"}}>{{column.label}}</th>
+                    {{/each}}
+                </tr>
+            </thead>
+            <tbody>
+                {{#each item in view.slicedContent}}
+                    <tr>
+                        {{#each column in view.columns}}
+                            {{#with column}}
+                                <td>{{field-access item property}}</td>
+                            {{/with}}
+                        {{/each}}
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div {{bind-attr class=":row view.pagination::hidden"}}>
+    <div class="col-md-5">Toplam {{view.filteredContent.length}} kayıt bulundu</div>
+    <div class="col-md-7">
+        <ul class="pagination">
+            <li class="" {{action "setPage" 1  target="view"}}><a>İlk</a>
+            </li>
+            <li class="" {{action "prevPage"  target="view"}}><a>Önceki</a>
+            </li>
+            <li class=""><span>{{view Ember.Select content=view.pageList value=currentPage}}/{{view.maxNumberOfPages}}</span>
+            </li>
+            <li class="" {{action "nextPage" target="view"}}><a>Sonraki</a>
+            </li>
+            <li class="" {{action "lastPage" target="view"}}><a>Son</a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,11 +1,12 @@
 import Ember from 'ember';
 
 function dateString(input) {
-  return moment(input).format('LL');
+	if(!input) return "";
+    return moment(input).format('LL');
 }
 
 export {
-  dateString
+    dateString
 };
 
 export default Ember.Handlebars.makeBoundHelper(dateString);

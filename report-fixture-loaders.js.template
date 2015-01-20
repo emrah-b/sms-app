@@ -1,0 +1,18 @@
+import  report from "../models/report";
+import  reportType from "../models/report-type";
+import  sms from "../models/sms";
+import  workOrder from "../models/work-order";
+
+
+
+export function initialize(/* container, application */) {
+  reportType.reopenClass({ FIXTURES: reportTypeFixtures});
+  workOrder.reopenClass({ FIXTURES: workOrderFixtures});
+  sms.reopenClass({ FIXTURES: smsFixtures});
+  report.reopenClass({ FIXTURES: reportFixtures});
+}
+
+export default {
+  name: 'report-fixture-loaders',
+  initialize: initialize
+};

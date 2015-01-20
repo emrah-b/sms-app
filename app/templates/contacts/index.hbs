@@ -82,9 +82,9 @@
                         {{#each contact in slicedContent}}
                            <tr>
                               <td class="center">{{eb-checkbox checked=contact.selected}}</td>
-                              <td>{{contact.id}} - {{contact.fullName}}</td>
-                              <td>{{contact.primaryPhoneNumber}}</td>
-                              <td class="hidden-xs">{{contact.secondaryPhoneNumber}}</td>
+                              <td>{{contact.fullName}}</td>
+                              <td>{{phone-number contact.primaryPhoneNumber}}</td>
+                              <td class="hidden-xs">{{phone-number contact.secondaryPhoneNumber}}</td>
                               <td class="hidden-xs">{{contact.primaryEmailAddress}}</td>
                               <td>
                                  <span class="tooltips" data-placement="top" data-original-title="Detay">
@@ -107,9 +107,10 @@
                         <li class=""><span>{{view Ember.Select content=pageList value=currentPage}}/{{maxNumberOfPages}}</span></li>
                         <li class="" {{action "nextPage"}}><a>Sonraki</a></li>
                         <li class="" {{action "lastPage"}}><a>Son</a></li>
+                     </ul>
                   </div>
                   
-               </div>
+            </div>
          </div>
       </div>
    </div>

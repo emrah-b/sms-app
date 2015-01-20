@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleFor('view:expand-json', 'ExpandJsonView');
+moduleFor('view:table-header-row', 'TableHeaderRowView');
 
 // Replace this with your real tests.
 test('it exists', function() {

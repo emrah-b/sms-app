@@ -1,12 +1,7 @@
 import DS from 'ember-data';
 
 var Originator = DS.Model.extend({
-	title: DS.attr('string'),
-	validations: {
-		title: {
-			length: [3, 5]
-		}
-	}
+	title: DS.attr('string')
 });
 
 Originator.reopenClass({

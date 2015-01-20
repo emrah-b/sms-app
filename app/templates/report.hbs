@@ -1,7 +1,71 @@
+<div class="toolbar row">
+    <div class="col-sm-6 hidden-xs">
+        <div class="page-header">
+            <h1>Raporlar
+                <small>Rapor ve grafikler</small>
+            </h1>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+        <a href="#" class="back-subviews">
+            <i class="fa fa-chevron-left"></i> BACK
+        </a>
+    </div>
+</div>
 <div class="row">
-    <div class="panel panel-white">
-        <div class="panel-body">
-        	sdfsdfsd
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>
+                {{#link-to 'home.index'}} Ana Ekran {{/link-to}}
+            </li>
+            <li>
+                {{#link-to 'reports'}} Raporlar {{/link-to}}
+            </li>
+            <li class="active">Rapor detay</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-white">
+
+            <div class="panel-heading">
+                    {{#link-to 'reports' class="btn btn-red btn-lg"}} {{model.reportType.name}} {{/link-to}}
+                    {{#link-to 'reports' class="btn btn-default btn-lg"}} {{date-string startDate}} {{/link-to}}
+                    {{#link-to 'reports' class="btn btn-default btn-lg"}} {{date-string endDate}} {{/link-to}}
+                    <div class="reportTools pull-right">
+                        <div class="btn-group">
+                            <a {{bind-attr class=":btn :btn-default charts::active"}} {{action "toggleCharts"}}>Tablo</a>
+                            <a {{bind-attr class=":btn :btn-default charts:active"}} {{action "toggleCharts"}}>Grafik</a>
+                        </div>
+                    </div>
+
+            </div>
         </div>
     </div>
 </div>
+<div {{bind-attr class=":row charts:hidden"}}>
+    <div class="col-md-12">
+        <div class="panel panel-white">
+            <div class="panel-body">
+                {{#if groupedReport}}
+                    {{table-component list=reportData columns=reportCols}}
+                {{else}}
+                    {{table-component list=reportData columns=reportCols}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
+<div {{bind-attr class=":row charts::hidden"}}>
+    <div class="col-md-12">
+        <div class="panel panel-white">
+            <div class="panel-body">
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+{{outlet}}

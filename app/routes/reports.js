@@ -5,7 +5,14 @@ export default Ember.Route.extend({
         this.controller.set("reportTypes", this.store.find("report-type"));
 
         this.controller.set("reportCriteria", Ember.Object.createWithMixins(Ember.Validations.Mixin, {
+            invalidDates: function() {
+                if (this.get("endDate") < this.get("startDate"))
+                    return true;
+                else
+                    return false;
+            }.property("startDate", "endDate"),
             validations: {
+
                 reportType: {
                     presence: true
                 },
@@ -17,30 +24,24 @@ export default Ember.Route.extend({
                 }
             }
         }));
-        this.controller.set("reportDetail", false);
     },
     actions: {
-        didTransition: function() {
-            this.controller.set("reportDetail", false);
-        },
         submit: function() {
             var that = this;
-            this.controller.get("reportCriteria").validate().then(function() {
-                var reportType = that.controller.get("reportCriteria").get("reportType");
-                var startDate = that.controller.get("reportCriteria").get("startDate");
-                var endDate = that.controller.get("reportCriteria").get("endDate");
+            var reportType = that.controller.get("reportCriteria.reportType");
+            var startDate = that.controller.get("reportCriteria.startDate");
+            var endDate = that.controller.get("reportCriteria.endDate");
 
-                if (endDate >= startDate && reportType.get("code")) {
-                    var startDateString = moment(startDate).format("YYYYMMDD");
-                    var endDateString = moment(endDate).format("YYYYMMDD");
-                    that.transitionTo("report", reportType.get("id"), {
-                        queryParams: {
-                            start: startDateString,
-                            end: endDateString
-                        }
-                    });
-                }
-            });
+            if (endDate >= startDate) {
+                var startDateString = moment(startDate).format("YYYYMMDD");
+                var endDateString = moment(endDate).format("YYYYMMDD");
+                that.transitionTo("report", reportType.get("id"), {
+                    queryParams: {
+                        start: startDateString,
+                        end: endDateString
+                    }
+                });
+            }
         }
     }
 });

@@ -15,15 +15,21 @@
     </label>
     <div class="col-sm-9">
     <a class="btn btn-grey" style="width:100%" href="#" {{action "togglePhoneNumberList" target="view"}}> <span class="text-bold text-left col-sm-10">{{model.phoneNumberList.length}} </span> <i {{bind-attr class=":fa listVisible:fa-arrow-circle-up:fa-arrow-circle-down"}} style="margin-left:86px"></i></a>
-    </div>
+    </div>/
     
 </div>
 <div class="form-group">
     <div class="col-sm-2"></div>
-    <div {{bind-attr class="listVisible::hidden :col-sm-7" }}>
+    <div {{bind-attr class="panel-scroll listVisible::hidden :col-sm-7" }}>
         <ul class="list-group">
             {{#each contact in model.phoneNumberList}}
-            <li class="list-group-item"><h5 style="font-weight:300"><span class="col-sm-4">{{contact.name}}</span> <span class=" col-sm-7 text-bold"> {{contact.number}}</span><span {{bind-attr class=":badge :badge-success"}}><i class="fa fa-check"></i></span></h5></li>
+            
+                <li class="list-group-item">
+                    <h5 style="font-weight:300">
+                        <span class="col-sm-4">{{contact.name}}</span> 
+                        <span class=" col-sm-7 text-bold"> {{phone-number contact.number}}</span><span {{bind-attr class=":badge :badge-success"}}><i class="fa fa-check"></i></span>
+                    </h5>
+                </li>
             {{/each}}
         </ul>
     </div>

@@ -8,6 +8,7 @@ var Router = Ember.Router.extend({
 Router.map(function() {
 	this.resource('home', { path: "/"}, function() {
 		
+		this.resource("edit-contact", {path: "contact/:id/edit"});
 		this.resource('contacts', { path: "/contacts"}, function() {
 			this.route('new');
 			this.route('excel-import');
@@ -17,14 +18,14 @@ Router.map(function() {
 		this.resource('groups', { path: "/groups"}, function() {
 		});	
 		this.resource('originators', {path: "/originators"});
-		this.resource("edit-contact", {path: "contact/:id/edit"});
 		
 		this.resource('balance', {path: '/balance'});
-		this.resource('reports', {path: '/reports'}, function () {
-			this.resource('report', {path: ':id'});
+		
+		this.resource('reports', {path: '/reports'});
+		this.resource('report', {path: '/report/:report_id'}, function(){
+			this.resource('work-order', {path: "/wo/:workOrder_id"});
 		});
 
-		
 
 		this.resource('sms', {path: '/sms'}, function() {
 			this.route("complete");

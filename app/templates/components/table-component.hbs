@@ -1,0 +1,66 @@
+<div {{bind-attr class=":row searchBar::hidden"}}>
+    <div class="col-md-12 pull-right">
+        <div class="pull-right" id="sample_2_filter">
+            <label>
+                {{input type="text" class=":form-control :input-sm" placeholder="Kisi arama..." value=filter}}
+            </label>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="table-responsive col-md-12">
+        <table class="table table-stripe table-hover">
+            <thead>
+                <tr>
+                    {{#each column in columns}}
+                        <th {{bind-attr class="column.hidden column.sortable:sortable asc[column.property]:sort_asc desc[column.property]:sort_desc"}} {{action 'sortBy' column.property }}>{{column.label}}</th>
+                    {{/each}}
+                </tr>
+            </thead>
+            <tbody>
+                {{#each item in slicedContent}}
+                    <tr>
+                        {{#each column in columns}}
+                            {{#with column}}
+                            	{{#if column.linkToResource}} 
+                            		{{#if item.linkable}}
+                               			<td {{bind-attr class="column.hidden"}}>{{#link-to item.resourceName item.keyId}} {{item.keyId}} <i class="fa fa-external-link"></i>{{/link-to}}</td> 
+                               		{{/if}}
+                                {{else}}
+                               		<td {{bind-attr class="column.hidden"}}>
+                               		{{#if column.smsStatusType}}{{sms-status item.status}}
+                               		{{else}} {{#if column.dateType}} {{#if item.sendDate}} {{date-string item.sendDate}}{{/if}}
+                               		{{else}} {{#if column.phoneType}} {{#if item.phoneNumber}} {{phone-number item.phoneNumber}} {{/if}}
+                               		{{else}}	
+	                               		{{field-access item property}}
+	                               	{{/if}}{{/if}}{{/if}}
+	                               	</td>
+                                	
+                                {{/if}}
+                            	
+                            {{/with}}
+                        {{/each}}
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div {{bind-attr class=":row pagination::hidden"}}>
+    <div class="col-md-5">Toplam {{filteredContent.length}} kayıt bulundu</div>
+    <div class="col-md-7">
+        <ul class="pagination">
+            <li class="" {{action "setPage" 1  }}><a>İlk</a>
+            </li>
+            <li class="" {{action "prevPage"  }}><a>Önceki</a>
+            </li>
+            <li class=""><span>{{view Ember.Select content=pageList value=currentPage}} / {{maxNumberOfPages}}</span>
+            </li>
+            <li class="" {{action "nextPage" }}><a>Sonraki</a>
+            </li>
+            <li class="" {{action "lastPage" }}><a>Son</a>
+            </li>
+        </ul>
+    </div>
+</div>
