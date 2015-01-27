@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForComponent('help-button-popover', 'HelpButtonPopoverComponent', {
+moduleForComponent('info-popover', 'InfoPopoverComponent', {
   // specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar']
 });

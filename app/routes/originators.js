@@ -1,6 +1,4 @@
 import Ember from 'ember';
-import Notify from 'ember-notify';
-
 
 export
 default Ember.Route.extend({
@@ -10,27 +8,38 @@ default Ember.Route.extend({
     actions: {
         create: function() {
             var newTitle = this.controller.get("newItem");
-            var _self = this;
+            var that = this;
+
+            if (newTitle == null || newTitle.trim().length === 0) {
+                that.controller.set("errorText", "Bu alan boş olamaz");
+                return;
+            }
+            if (newTitle.trim().length < 2) {
+                that.controller.set("errorText", "Başlık çok kısa");
+                return;
+            }
+            if (newTitle.trim().length > 20) {
+                that.controller.set("errorText", "Başlık çok uzun");
+                return;
+            }
+            if (newTitle.trim().search(/^[a-zA-Z0-9]{2,20}$/) === -1) {
+                that.controller.set("errorText", "Girdiginiz baslik yalnizca harf ve sayilardan olusmali!");
+                return;
+            }
+
 
             this.store.filter('originator', function(orgtr) {
-                return orgtr.get("title") === newTitle;
+                return orgtr.get("title") === newTitle.trim();
             }).then(function(matchingOriginators) {
                 if (matchingOriginators.get("length") > 0) {
-                    _self.controller.set("invalidTitle", true);
-                    
-                    Notify.error("Varolan bir basligi ekleyemezsiniz!");
-                    return;
-                }
-                if (newTitle == null || newTitle.search(/^[a-zA-Z0-9]{2,20}$/) === -1) {
-                    _self.controller.set("invalidTitle", true);
-                    Notify.error("Girdiginiz baslik yalnizca harf ve sayilardan olusmali!");
+                    that.controller.set("errorText", "Varolan bir basligi ekleyemezsiniz!");
                     return;
                 }
 
-                _self.store.createRecord('originator', {
-                    title: newTitle.toUpperCase()
+                that.store.createRecord('originator', {
+                    title: newTitle.trim().toUpperCase()
                 }).save().then(function() {
-                    _self.toggleAdding();
+                    that.toggleAdding();
                 });
             });
 
@@ -46,7 +55,7 @@ default Ember.Route.extend({
     },
     clearNewItem: function() {
         this.controller.set("newItem", "");
-        this.controller.set("invalidTitle", false);
+        this.controller.set("errorText", undefined);
     },
     toggleAdding: function() {
         var adding = this.controller.get("adding") || false;

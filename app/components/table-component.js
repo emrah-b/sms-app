@@ -12,7 +12,7 @@ export default Ember.Component.extend({
     data: function() {
         return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
         	content: this.get("list")
-        })
+        });
     }.property("list"),
     pageList: function() {
         var array = [];
