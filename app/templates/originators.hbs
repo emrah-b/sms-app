@@ -44,7 +44,7 @@
                     </span>
                 {{else}}
                     <span {{bind-attr class=":btn :btn-default :btn-lg :add-tag adding :space10 errorText:has-error"}}>
-                        {{view "focus-text-field" classNameBindings=":add-tag-input errorText:error" value=newItem action='create'}}
+                        {{view "focus-text-field" classNameBindings=":add-tag-input errorText:error" value=newItem action='create' escapePressed="toggleAdding"}} 
 
                         <a href="#" class="add-tag-input" {{action "toggleAdding" }}><i class="fa fa-times add-tag-input margin-left-5"></i></a>
                         {{#if errorText}}

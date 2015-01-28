@@ -29,7 +29,7 @@ default Ember.Route.extend({
 
 
             this.store.filter('originator', function(orgtr) {
-                return orgtr.get("title") === newTitle.trim();
+                return orgtr.get("title") === newTitle.trim().toUpperCase();
             }).then(function(matchingOriginators) {
                 if (matchingOriginators.get("length") > 0) {
                     that.controller.set("errorText", "Varolan bir basligi ekleyemezsiniz!");
@@ -37,7 +37,8 @@ default Ember.Route.extend({
                 }
 
                 that.store.createRecord('originator', {
-                    title: newTitle.trim().toUpperCase()
+                    title: newTitle.trim().toUpperCase(),
+                    approved: false
                 }).save().then(function() {
                     that.toggleAdding();
                 });
@@ -51,6 +52,11 @@ default Ember.Route.extend({
         },
         toggleAdding: function() {
             this.toggleAdding();
+        },
+        escapePressed: function() {
+            alert("sdf");
+            if(e.which !== 27) return;
+            if(this.controller.get("adding")) this.toggleAdding();
         }
     },
     clearNewItem: function() {
