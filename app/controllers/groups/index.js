@@ -23,19 +23,7 @@ export default Ember.ArrayController.extend({
             });
         },
         confirmDeleteGroup: function() {
-            var _this = this;
-            bootbox.confirm("Grubu silmek istediğinize emin misiniz?", function(result){
-                if(!result) return;
-                if(!_this.get("selectedGroup")) {
-                    Notify.warning("Grup bulunamadi");
-                    return;
-                }
-
-                _this.get("selectedGroup").deleteRecord();
-                _this.get("selectedGroup").save();
-
-                Notify.success("Grup silindi");
-            });
+            this.get("selectedGroup").destroyWithContacts();
         }
     }
 });

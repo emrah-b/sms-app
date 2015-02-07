@@ -8,8 +8,10 @@ var Router = Ember.Router.extend({
 Router.map(function() {
 	this.resource('home', { path: "/"}, function() {
 		
-		this.resource("edit-contact", {path: "contact/:id/edit"});
+		this.resource("edit-contact", {path: "contacts/:contact_id/edit"});
+				
 		this.resource('contacts', { path: "/contacts"}, function() {
+			this.resource('contact', {path: '/:contact_id'});
 			this.route('new');
 			this.route('excel-import');
 			this.route('excel-export');

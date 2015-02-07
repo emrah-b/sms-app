@@ -1,0 +1,30 @@
+<div class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    {{#unless view.noHeader}}
+      <div class="modal-header">
+		 {{#unless view.headerTemplate}}
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title">{{view.title}}</h4>
+	     {{else}}
+     		{{partial view.headerTemplate}}
+     	{{/unless}}
+      	</div>
+    {{/unless}}
+      <div class="modal-body">
+        {{yield}}
+      </div>
+    {{#unless view.noFooter}}
+      <div class="modal-footer">
+		 {{#unless view.footerTemplate}}
+	       <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+        	<button type="button" class="btn btn-primary" {{action 'ok' target="view"}}>Tamam</button>
+	     {{else}}
+     		{{partial view.footerTemplate}}
+     	{{/unless}}
+      	</div>
+    {{/unless}}
+      
+    </div>
+  </div>
+</div>

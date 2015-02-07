@@ -1,0 +1,9 @@
+ <a {{bind-attr class=":btn :btn-default :pull-left confirmDelete:hidden"}} {{action "toggleConfirmDelete"}}><i class="fa fa-trash-o"></i></a>
+  <span {{bind-attr class=":pull-left confirmDelete::hidden"}}>
+     Emin misiniz? 
+     <a class="btn btn-default" {{action "delete"}}><i class="fa fa-check"></i></a>
+     <a class="btn btn-default" {{action "toggleConfirmDelete"}}><i class="fa fa-times"></i></a>
+  </span>
+  {{#link-to "edit-contact" model class="btn btn-default pull-left"}}<i class="fa fa-edit"></i>{{/link-to}}
+
+ <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>

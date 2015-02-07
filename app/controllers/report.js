@@ -24,12 +24,12 @@ export default Ember.Controller.extend({
 
             filteredReportData.forEach(function(reportDataRow) {
                 var smsList = Ember.A(reportDataRow.content);
-                var groupLabelResolver = that.groupLabelResolver(groupedBy, reportDataRow.key);
+               // var groupLabelResolver = that.groupLabelResolver(groupedBy, reportDataRow.key);
 
                 metaData.push(Ember.Object.create({
                     resourceName: groupedBy,
                     keyId: reportDataRow.key,
-                    keyName: groupLabelResolver.fn.apply(that, groupLabelResolver.args),
+                    keyName: "",//groupLabelResolver.fn.apply(that, groupLabelResolver.args),
                     messageCount: smsList.length,
                     linkable: that.isLinkable(groupedBy),
                     pendingCount: smsList.filterBy('status', 2).length,

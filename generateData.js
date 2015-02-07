@@ -53,18 +53,24 @@ function generateContacts(numberOfContacts) {
             randomGroups.push(k);
         };
 
-        var cfBindingCount = Math.floor(Math.random() * numberOfCustomFields + 1);
+        
         var bindings = [];
 
-        for (var j = 1; j <= cfBindingCount; j++) {
+        for (var j = 1; j <= numberOfCustomFields; j++) {
+            var bindingHasValue = Math.floor(Math.random() + 2);
+
         	var bindingValue = (customFieldFixtures[j-1].type === 'date') ? 
 				        	new Date(
-					            Math.floor(Math.random() * 40 + 2005),
+					            Math.floor(Math.random() * 40 + 1970),
 					            Math.floor(Math.random() * 12 + 1),
-					            Math.floor(Math.random() * 28 + 1)) : customFieldFixtures[j-1].possibleAnswers[Math.floor(Math.random() + cfBindingCount)];
+					            Math.floor(Math.random() * 28 + 1)) : customFieldFixtures[j-1].possibleAnswers[Math.floor(Math.random() + customFieldFixtures[j-1].possibleAnswers)];
+
+            if(!bindingHasValue) bindingValue = undefined;
 			var bindingField = customFieldFixtures[j-1].id;
 
-            cfBindingFixtures = cfBindingFixtures.concat(JSON.stringify({id: cfBindingId++, customField: bindingField, value: bindingValue}) + ",\n");
+            cfBindingFixtures = cfBindingFixtures.concat(JSON.stringify({id: cfBindingId++, customField: bindingField, value: bindingValue, 
+                                                                        label: customFieldFixtures[j-1].label,
+                                                                        type: customFieldFixtures[j-1].type}) + ",\n");
             bindings.push(j);
         };
 

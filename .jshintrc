@@ -2,13 +2,17 @@
   "predef": [
     "document",
     "window",
-    "-Promise",
+    "Promise",
     "$",
     "jquery",
     "Ember",
     "Em",
     "bootbox",
-    "moment"
+    "moment",
+    "XLSX",
+    "XLSXWorkbook",
+    "Blob",
+    "saveAs"
   ],
   "browser" : true,
   "boss" : true,

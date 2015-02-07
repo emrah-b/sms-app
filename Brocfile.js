@@ -41,6 +41,8 @@ app.import("bower_components/font-awesome/fonts/fontawesome-webfont.woff", {
     destDir: 'fonts'
 });
 
+app.import('bower_components/animate.css/animate.min.css');
+
 app.import('bower_components/ic-styled/main.js');
 app.import('bower_components/ember-utils/dist/globals/main.js');
 app.import('bower_components/ember-components/dist/globals/main.js');
@@ -63,12 +65,17 @@ app.import("bower_components/datetimepicker/jquery.datetimepicker.css");
 
 app.import("bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js");
 
+app.import("bower_components/js-xlsx/dist/jszip.js");
+app.import("bower_components/js-xlsx/dist/xlsx.js");
+app.import("bower_components/velocity/velocity.js");
+
+app.import("vendor/js/subview.js");
+app.import("vendor/js/Blob.js");
+app.import("vendor/js/FileSaver.js");
 app.import("vendor/plugins/perfect-scrollbar/src/perfect-scrollbar.css");
-app.import("vendor/plugins/animate.css/animate.min.css");
 app.import("vendor/plugins/perfect-scrollbar/src/jquery.mousewheel.js");
 app.import("vendor/plugins/perfect-scrollbar/src/perfect-scrollbar.js");
 app.import("vendor/plugins/jquery.scrollTo/jquery.scrollTo.min.js");
-app.import("vendor/plugins/velocity/jquery.velocity.min.js");
 app.import("vendor/plugins/jquery.sparkline/jquery.sparkline.js");
 
 app.import('vendor/js/index.js');

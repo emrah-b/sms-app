@@ -52,11 +52,6 @@ default Ember.Route.extend({
         },
         toggleAdding: function() {
             this.toggleAdding();
-        },
-        escapePressed: function() {
-            alert("sdf");
-            if(e.which !== 27) return;
-            if(this.controller.get("adding")) this.toggleAdding();
         }
     },
     clearNewItem: function() {
