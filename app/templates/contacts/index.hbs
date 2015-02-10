@@ -1,0 +1,120 @@
+<div>
+   <div class="toolbar row">
+      <div class="col-sm-6 hidden-xs">
+         <div class="page-header">
+            <h1>Kişiler
+               <small>SMS Kontakları ve grup yönetimi</small>
+            </h1>
+         </div>
+      </div>
+      <div class="col-sm-6 col-xs-12">
+         <div class="toolbar-tools pull-right">
+            <ul class="nav navbar-right">
+               <li class="dropdown">
+                  {{#link-to 'contacts.new'}}
+                     <i class="fa fa-plus"></i>YENI{{/link-to}}
+               </li>
+               <li class="dropdown">
+                  {{#link-to 'contacts.excel-import'}}
+                     <i class="fa fa-upload"></i>ICERI AL{{/link-to}}
+               </li>
+               <li class="dropdown">
+                  <a href="#" {{action 'exportToExcel'}}> 
+                     <i class="fa fa-download"></i>INDIR</a>
+               </li>
+            </ul>
+         </div>
+      </div>
+
+   </div>
+   <!-- end: TOOLBAR -->
+   <!-- end: PAGE HEADER -->
+   <!-- start: BREADCRUMB -->
+   <div class="row">
+      <div class="col-md-12">
+         <ol class="breadcrumb">
+            <li>
+               {{#link-to 'home.index'}}Ana Ekran{{/link-to}}
+            </li>
+            <li class="active">Kisiler</li>
+         </ol>
+      </div>
+   </div>
+   <!-- end: BREADCRUMB -->
+   <!-- start: PAGE CONTENT -->
+   <div class="row">
+      <div class="col-md-12">
+         <div class="panel panel-white">
+            <div class="panel-body">
+               <div class="row">
+                  <div class="col-md-6">
+                     <p>
+                        {{#em-modal-toggler modal-id="confirm-delete" class="btn btn-orange" on-toggle="setMultipleDeletion" }}<i class="fa fa-trash-o"></i> &nbsp; Sil{{/em-modal-toggler}}
+                     </p>
+                  </div>
+                  <div class="col-md-6 pull-right">
+                     <div class="pull-right" id="sample_2_filter">
+                        <label>
+                           {{input type="text" class=":form-control :input-sm" placeholder="Kisi arama..." value=filter}}
+                        </label>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="table-responsive col-md-12">
+                     <table class="table table-stripe table-hover">
+                        <thead>
+                           <tr>
+                              <th class="center">
+                                 {{#if allSelected}}
+                                    <a {{action "clearSelection"}}><i class="fa fa-check-square fa-2x"></i></a> 
+                                 {{else}}
+                                    <a {{action "selectAll"}}><i class="fa fa-square fa-2x"></i></a> 
+                                 {{/if}}
+                              </th>
+                              <th {{bind-attr class=":sortable asc.fullName:sort_asc desc.fullName:sort_desc"}} {{action 'sortBy' 'fullName'}}>Isim</th>
+                              <th {{bind-attr class=":sortable asc.primaryPhoneNumber:sort_asc desc.primaryPhoneNumber:sort_desc"}} {{action 'sortBy' 'primaryPhoneNumber'}}>Cep telefonu</th>
+                              <th class="hidden-xs">Ikinci cep telefonu</th>
+                              <th class="hidden-xs">E-Mail</th>
+                              <th></th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           {{#each contact in slicedContent}}
+                              <tr>
+                                 <td class="center">{{eb-checkbox checked=contact.selected}}</td>
+                                 <td>{{contact.fullName}}</td>
+                                 <td>{{phone-number contact.primaryPhoneNumber}}</td>
+                                 <td class="hidden-xs">{{phone-number contact.secondaryPhoneNumber}}</td>
+                                 <td class="hidden-xs">{{contact.primaryEmailAddress}}</td>
+                                 <td>
+                                    <span class="tooltips" data-placement="top" data-original-title="Detay">
+                                       {{#link-to 'contact' contact.id class="btn btn-xs btn-blue tooltips"}}<i class="fa fa-user"></i>{{/link-to}}
+                                    
+                                    </span>
+                                 </td>
+                              </tr>
+                           {{/each}}
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <div class="row">
+                     <div class="col-md-5">Toplam {{filteredContent.length}} kayıt bulundu</div>
+                     <div class="col-md-7">
+                        <ul class="pagination">
+                           <li class="" {{action "setPage" 1}}><a>İlk</a></li>
+                           <li class="" {{action "prevPage"}}><a>Önceki</a></li>
+                           <li class=""><span>{{view Ember.Select content=pageList value=currentPage}}/{{maxNumberOfPages}}</span></li>
+                           <li class="" {{action "nextPage"}}><a>Sonraki</a></li>
+                           <li class="" {{action "lastPage"}}><a>Son</a></li>
+                        </ul>
+                     </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   {{em-modal-confirm confirm-id="confirm-delete" configName="bs" close-if=close title="Sil" message="Secilen kisileri silmek istediginizden emin misiniz?" confirm="deleteSelected"}}
+</div>

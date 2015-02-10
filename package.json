@@ -32,9 +32,7 @@
     "ember-notify": "^1.2.0",
     "express": "^4.8.5",
     "glob": "^4.0.5",
-    "handlebars-helpers": "^0.5.8",
-    "ember-cli-sheetjs": "0.0.5"
+    "handlebars-helpers": "^0.5.8"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

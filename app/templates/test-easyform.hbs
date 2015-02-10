@@ -31,7 +31,9 @@
             <h4> SMS <span class="text-bold">Basliklari </span></h4>
         </div>
 
-
+            <div class="row">
+            <button class="btn btn-primary" {{action "printContact"}}>Test Contact</button>
+            </div>
         <div class="panel-body">
             {{#form-for model wrapper="horizontal-form"}}
                 {{input firstName hint="Adinizi girin diye"}} 
@@ -39,7 +41,7 @@
                 {{input email}}
                 {{input phone as="masked" label="phone" mask="999-aaa-***" }} 
                 {{input age}}
-                {{input dateOfBirth as='datepicker' format="LL"}}
+                {{input dateOfBirth as='datepicker'}}
                 {{input chosenItem 
                   as="select2" 
                   collection=controller.liste
@@ -48,6 +50,9 @@
                   optionLabelPath="label" }}
                 {{input isFaggot as="checkbox"}}
             {{/form-for}}
+
+
         </div>
+
     </div>
 </div>

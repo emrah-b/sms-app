@@ -7,7 +7,7 @@
          {{input type="checkbox" checked=model}}
       {{else}}
          {{#if isDate}}
-            {{date-picker value=model format="LL" yearRange=3}}
+            {{date-picker value=model yearRange=3}}
          {{else}}
                {{#if isTextArea}}
                   {{textarea value=model class="form-control"}}

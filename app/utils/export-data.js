@@ -8,30 +8,23 @@ export default Ember.Object.create({
         modelList: true,
         templateOnly: false
     },
-    getPromiseList: function(models) {
-        var promises = [];
-        promises.push(models.objectAt(0).getHeaderRow());
-        if (this.settings.templateOnly) return promises;
-        models.forEach(function(dataRow) {
-            promises.push(dataRow.getDataRow());
-        });
-        return promises;
-    },
     createDataFromModelArray: function(models) {
         if (!models) return {};
         if (!models instanceof Array) return {};
-        var promises = this.getPromiseList(models);
+        if (models.length === 0) return {}
         return new Promise(function(resolve) {
-            Promise.all(promises).then(function(values) {
-                var data = [];
-                data.push(values[0]);
-                if (values.length === 1) return data;
-                for (var i = 1; i < values.length; i++) {
-                    data.push(values[i]);
-                }
-                resolve(data);
+            var data = [];
+            var expectedLength = (this.settings.templateOnly) ? 1 : models.get("length") + 1;
+            models.forEach(function(model) {
+                model.serialize().then(function(s) {
+                    data.push(s.displayValues);
+                    if (data.length === expectedLength - 1) {
+                        data[0] = s.labels;
+                        resolve(data);
+                    }
+                }.bind(this));
             });
-        });
+        }.bind(this));
     },
     createSheetFrom2DArray: function(data) {
         var ws = {};
@@ -85,7 +78,7 @@ export default Ember.Object.create({
             return;
         }
         this.createDataFromModelArray(data).then(function(dataArray) {
-            this.saveSpreadsheet(dataArray, fileName);
+            return this.saveSpreadsheet(dataArray, fileName);
         }.bind(this));
     },
     saveSpreadsheet: function(data, fileName) {
@@ -101,7 +94,6 @@ export default Ember.Object.create({
             bookSST: false,
             type: 'binary'
         });
-        
         saveAs(new Blob([this.s2ab(wbout)], {
             type: "application/octet-stream"
         }), fileName || "export.xlsx");

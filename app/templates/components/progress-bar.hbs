@@ -1,0 +1,5 @@
+<div class="progress">
+    <div {{bind-attr class=":progress-bar error:progress-bar-danger" style=progressBarStyle}} aria-valuenow="{{unbound percentage}}" aria-valuemax="{{unbound max}}" aria-valuemin="1">
+        {{#if showPercentage}} {{percentage}} {{/if}}
+    </div>
+</div>

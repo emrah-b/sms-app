@@ -68,10 +68,10 @@ function generateContacts(numberOfContacts) {
             if(!bindingHasValue) bindingValue = undefined;
 			var bindingField = customFieldFixtures[j-1].id;
 
-            cfBindingFixtures = cfBindingFixtures.concat(JSON.stringify({id: cfBindingId++, customField: bindingField, value: bindingValue, 
+            cfBindingFixtures = cfBindingFixtures.concat(JSON.stringify({id: cfBindingId, customField: bindingField, value: bindingValue, 
                                                                         label: customFieldFixtures[j-1].label,
                                                                         type: customFieldFixtures[j-1].type}) + ",\n");
-            bindings.push(j);
+            bindings.push(cfBindingId++);
         };
 
         var contact = {

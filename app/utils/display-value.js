@@ -1,6 +1,6 @@
 export default function displayValue(value, type) {
     if (type === 'date') {
-        return moment(Date.parse(value)).format("LL");
+        return moment(Date.parse(value)).format("L");
     } else if (type === 'bool') {
         return (value) ? 'Evet' : 'Hayır';
     } else if (type === 'phone-number') {

@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import displayValue from 'kingmesaj/utils/display-value';
 
 var Originator = DS.Model.extend(Ember.Validations.Mixin, {
 	title: DS.attr('string'),
@@ -8,7 +9,7 @@ var Originator = DS.Model.extend(Ember.Validations.Mixin, {
 		var text = "Bu başlık henüz onaylanmamış";
 
 		if(this.get("approved")) {
-			text = "Onaylanma tarihi: " + moment(this.get("approvedDate")).format('LL');
+			text = "Onaylanma tarihi: " + displayValue(this.get("approvedDate"));
 		}
 
 		return text;

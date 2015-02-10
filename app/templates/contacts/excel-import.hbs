@@ -1,0 +1,51 @@
+<div class="main animated fadeInRight subview-full-screen" style="">
+    <div class="row" style="height: 100%">
+        <div class="col-md-1 col-sm-1 subview-close-bar" {{action "cancel"}} style="cursor:pointer">
+            <i class="fa fa-2x fa-chevron-left padding-20"></i>
+        </div>
+
+        {{#view "perfect-scroll" classNameBindings=":col-md-8 :col-md-offset-1 :col-sm-10" wheelSpeed=50}}
+            <h2 class="padding-vertical-20">Excel dosyasından kişi yükleme</h2>
+
+            {{#if steps.downloadTemplate}}
+                <div class="panel panel-white panel-shadow">
+                    <div class="panel-heading">
+                        <div class="panel-title">Adım 1: Şablonu indirin</div>
+                    </div>
+                    <div class="panel-body">
+                        <p>Sisteme kişi yükleyebilmek için kişi bilgilerini indirdiğiniz şablona doldurmanız gerekir</p>
+                        <button class="btn btn-blue btn-block" {{action "downloadTemplate" }}>Şablonu İndir</button>
+                    </div>
+                </div>
+            {{/if}}
+            {{#if steps.upload}}
+                {{#view "pulse-view" class="panel panel-white panel-shadow" classNameBindings= "excelLoadError:panel-error"}}
+                    <div class="panel-heading">
+                        <div class="panel-title">Adım 2: Doldurduğunuz dosyayı yükleyin</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12">
+                            {{file-input-row data=excelData fileName=fileName accept=".xlsx"}}
+                        </div>
+
+                        <div class="space10"></div>
+                        <div class="col-sm-12">
+                            {{progress-bar valueNow=contactsLoaded max=excelFileSize error=excelLoadError}}
+                        </div>
+
+                        <div class="col-sm-12">
+                            {{#if excelLoadError}}
+                                <div class="alert alert-block alert-danger">
+                                    {{excelLoadError}}
+                                </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                {{/view}}
+            {{/if}}
+
+        {{/view}}
+
+        <div class="col-md-2 col-sm-1"></div>
+    </div>
+</div>

@@ -1,13 +1,7 @@
 import DS from 'ember-data';
-import ExportableMixin from 'kingmesaj/mixins/exportable';
+import Serializable from 'kingmesaj/mixins/serializable';
 
-var printPhoneNumber = function(input) {
-    if (!input || !input.match(/^(\d{3})(\d{3})(\d{2})(\d{2})$/g)) return input;
-    var groups = input.match(/^(\d{3})(\d{3})(\d{2})(\d{2})$/m);
-    return "0 (" + groups[1] + ") " + groups[2] + " " + groups[3] + " " + groups[4];
-};
-
-export default DS.Model.extend(ExportableMixin, {
+export default DS.Model.extend(Serializable, Ember.Validations.Mixin, {
     firstName: DS.attr('string'),
     lastName: DS.attr('string'),
     primaryPhoneNumber: DS.attr('string'),
@@ -28,7 +22,7 @@ export default DS.Model.extend(ExportableMixin, {
     fullName: function() {
         return this.get('firstName') + ' ' + this.get('lastName');
     }.property('firstName', 'lastName'),
-    export: {
+    serialization: {
         fields: {
             firstName: {
                 label: "Adı"
@@ -64,8 +58,10 @@ export default DS.Model.extend(ExportableMixin, {
         },
         dynamicFields: {
             customFieldBindings: {
-                labelPath: "label",
+                labelPath: "customField.label",
                 valuePath: "value",
+                typePath: "customField.type",
+                miscPath: "customField.id" 
             }
         }
     }

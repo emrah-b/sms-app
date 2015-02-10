@@ -69,6 +69,8 @@ app.import("bower_components/js-xlsx/dist/jszip.js");
 app.import("bower_components/js-xlsx/dist/xlsx.js");
 app.import("bower_components/velocity/velocity.js");
 
+app.import("bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css");
+
 app.import("vendor/js/subview.js");
 app.import("vendor/js/Blob.js");
 app.import("vendor/js/FileSaver.js");

@@ -19,7 +19,7 @@ export default Ember.Component.extend({
                 });
             },
             firstDay: 1,
-            format: this.get('format') || 'LL'
+            format: this.get('format') || 'L'
         };
 
         options.i18n = {

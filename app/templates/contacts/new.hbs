@@ -41,7 +41,7 @@
                {{input secondaryPhoneNumber label="İkincil Telefon Numarası" as="masked" mask="0 999 999 99 99"}}
                {{input primaryEmailAddress label="E-Mail"}}
                {{input secondaryEmailAddress label="Ikincil E-Mail"}}
-               {{input dateOfBirth as="datepicker" label="Doğum Tarihi" format="LL"}}
+               {{input dateOfBirth as="datepicker" label="Doğum Tarihi"}}
                {{input canReceiveMessages as="checkbox" label="Mesaj alabilir"}}
                {{#each binding in customFieldBindings}}
                   {{input binding.value asBinding="binding.inputType" labelBinding="binding.customField.label"}}
