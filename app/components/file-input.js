@@ -7,9 +7,9 @@ export default Ember.TextField.extend({
         e.preventDefault();
         var files = e.target.files;
         var i, f;
-        for (i = 0, f = files[i]; i != files.length; ++i) {
+        for (i = 0, f = files[i]; i !== files.length; ++i) {
             var reader = new FileReader();
-            var name = f.name;
+            
             reader.onload = function(e) {
                 var data = e.target.result;
                 /* if binary string, read with type 'binary' */

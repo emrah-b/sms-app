@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 	}.observes("value"),
 	actions: {
 		removeFile: function(){
-			this.set("value", undefined);
+			this.set("value", null);
 		}
 	}
 });

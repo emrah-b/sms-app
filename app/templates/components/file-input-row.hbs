@@ -4,11 +4,10 @@
     	<span class="fileupload-filename fileinput-filename">{{fileName}}</span>
     </div>
 
-    <span class="input-group-addon btn btn-light-grey btn-file">
+    <span {{bind-attr class=":input-group-addon :btn :btn-light-grey :btn-file value:hidden"}}>
     	<span {{bind-attr class=" :fileupload-new value:hidden"}}>
     		<i class="fa fa-folder-open-o"></i> Dosya seç
     	</span>
-    	<span {{bind-attr class=":fileupload-exists :fileinput-exists value::hidden"}}><i class="fa fa-folder-open-o"></i> Değiştir</span>
     	{{file-input value=value binary=data accept=accept}}
     </span>
     <a href="#" {{action "removeFile"}} {{bind-attr class=":input-group-addon :btn :btn-light-grey :fileinput-exists :fileupload-exists value::hidden"}} data-dismiss="fileinput"><i class="fa fa-times"></i> Kaldır</a>

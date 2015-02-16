@@ -2,10 +2,11 @@ import Ember from 'ember';
 
 export default Ember.View.extend({
 	tagName: "div",
-	classNames: ["animated", "pulse", "border-while-pulsing"],
+	classNames: ["animated", "pulse"],
 	didInsertElement: function() {
 		this.$().one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-			this.$().removeClass("border-while-pulsing")
+			var container = this.$().parent();
+            container.scrollTo(this.$(), 800);
 		}.bind(this));
 	}
 });

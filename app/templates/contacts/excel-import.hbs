@@ -4,22 +4,24 @@
             <i class="fa fa-2x fa-chevron-left padding-20"></i>
         </div>
 
-        {{#view "perfect-scroll" classNameBindings=":col-md-8 :col-md-offset-1 :col-sm-10" wheelSpeed=50}}
+        {{#view "perfect-scroll" classNameBindings=":col-md-8 :col-md-offset-1 :col-sm-10" wheelSpeed=50 id="stepContainer" }}
             <h2 class="padding-vertical-20">Excel dosyasından kişi yükleme</h2>
 
             {{#if steps.downloadTemplate}}
-                <div class="panel panel-white panel-shadow">
+                <div class="panel panel-white panel-shadow" id="1">
                     <div class="panel-heading">
                         <div class="panel-title">Adım 1: Şablonu indirin</div>
                     </div>
                     <div class="panel-body">
-                        <p>Sisteme kişi yükleyebilmek için kişi bilgilerini indirdiğiniz şablona doldurmanız gerekir</p>
-                        <button class="btn btn-blue btn-block" {{action "downloadTemplate" }}>Şablonu İndir</button>
+                        <div class="col-sm-12">
+                            <p>Sisteme kişi yükleyebilmek için kişi bilgilerini indirdiğiniz şablona doldurmanız gerekir</p>
+                            <button class="btn btn-blue btn-block" {{action "downloadTemplate" }}>Şablonu İndir</button>
+                        </div>
                     </div>
                 </div>
             {{/if}}
             {{#if steps.upload}}
-                {{#view "pulse-view" class="panel panel-white panel-shadow" classNameBindings= "excelLoadError:panel-error"}}
+                {{#view "pulse-view" class="panel panel-white panel-shadow step-2" classNameBindings="excelLoadError:panel-error" id="2" }}
                     <div class="panel-heading">
                         <div class="panel-title">Adım 2: Doldurduğunuz dosyayı yükleyin</div>
                     </div>
@@ -30,15 +32,123 @@
 
                         <div class="space10"></div>
                         <div class="col-sm-12">
-                            {{progress-bar valueNow=contactsLoaded max=excelFileSize error=excelLoadError}}
+                            {{progress-bar valueNow=numOfContactsLoaded max=numOfContacts error=excelLoadError}}
                         </div>
 
                         <div class="col-sm-12">
                             {{#if excelLoadError}}
-                                <div class="alert alert-block alert-danger">
+                                <div class="alert alert-block alert-danger animated fadeIn">
                                     {{excelLoadError}}
                                 </div>
                             {{/if}}
+                        </div>
+                        <div {{bind-attr class=":col-sm-12 allContactsLoaded::hidden"}}>
+                            {{#if invalidContacts.length}}
+                                <div {{bind-attr class=":alert :alert-block validContacts.length:alert-warning:alert-danger"}}>
+                                    <h4 class="alert-heading"><i class="fa fa-exclamation"></i> {{invalidContacts.length}} kayıtta hata bulundu</h4>
+                                    {{#unless validContacts.length}}
+                                        <p>Geçerli kayıt bulunamadı!</p>
+                                    {{/unless}}
+                                    <p class="text-bold">Aşağıdaki hatalı kayıtları dosyada düzeltip tekrar yüklemeniz gerekmektedir. Aksi halde hatalı olan kişiler rehbere kaydedilmez</p>
+                                    <p></p>
+                                    <p>
+                                        <a href="#" {{bind-attr class=":btn :btn-yellow validContacts.length::hidden"}} {{action "moveTo" 3}}> Geçerli olan {{validContacts.length}} kişiyle devam et</a>
+                                        <a href="#" {{bind-attr class=":btn :btn-light-grey"}} {{action "toggleErrorList"}}> Hatalı Kayıtlar <i {{bind-attr class=":fa showErrorList:fa-arrow-circle-down:fa-arrow-circle-right"}} style="margin-left:86px"></i></a>
+                                    </p>
+                                </div>
+                                {{#view "perfect-scroll" wheelSpeed=50 class="col-sm-12 table-responsive animated fadeIn height-230" classNameBindings="showErrorList::hidden" }}
+                                    <table class="table table-hover">
+                                        <tr>
+                                            <th>Adı</th>
+                                            <th>Soyadı</th>
+                                            <th>Telefon</th>
+                                            <th>2. Telefon</th>
+                                            <th>E-mail</th>
+                                            <th>2. E-mail</th>
+                                        </tr>
+                                        {{#each invalidContacts}}
+                                            <tr>
+                                                <td {{bind-attr class="errors.firstName:error-cell"}}>
+                                                    {{firstName}} {{errors.firstName}}
+                                                </td>
+                                                <td {{bind-attr class="errors.lastName:error-cell"}}>
+                                                    {{lastName}}{{errors.lastName}}
+                                                </td>
+                                                <td {{bind-attr class="errors.primaryPhoneNumber:error-cell"}}>
+                                                    {{primaryPhoneNumber}} {{errors.primaryPhoneNumber}}
+                                                </td>
+                                                <td {{bind-attr class="errors.secondaryPhoneNumber:error-cell"}}>
+                                                    {{secondaryPhoneNumber}} {{errors.secondaryPhoneNumber}}
+                                                </td>
+                                                <td {{bind-attr class="errors.primaryEmailAddress:error-cell"}}>
+                                                    {{primaryEmailAddress}} {{errors.primaryEmailAddress}}
+                                                </td>
+                                                <td {{bind-attr class="errors.secondaryEmailAddress:error-cell"}}>
+                                                    {{secondaryEmailAddress}} {{errors.secondaryEmailAddress}}
+                                                </td>
+                                            </tr>
+                                        {{/each}}
+                                    </table>
+                                {{/view}}
+                            {{else}}
+                                {{#if validContacts.length}}
+                                    <div class="alert alert-block alert-success">
+                                        <h4 class="alert-heading"><i class="fa fa-exclamation"></i> Dosyadaki bütün kayıtlar geçerli</h4>
+                                        <p>
+                                            <a href="#" {{bind-attr class=":btn :btn-green validContacts.length::hidden"}} {{action "moveTo" 3}}> Bulunan {{validContacts.length}} kişiyle devam et</a>
+                                        </p>
+                                    </div>
+                                {{/if}}
+                            {{/if}}
+                        </div>
+                    </div>
+                {{/view}}
+            {{/if}}
+            {{#if steps.setGroupAndSave}}
+                {{#view "pulse-view" class="panel panel-white panel-shadow" }}
+                    <div class="panel-heading">
+                        <div class="panel-title">Adım 3: Kişileri ekleyeceğiniz grubu seçin</div>
+                    </div>
+                    <div class="panel-body">
+                        <div {{bind-attr class=":well existingGroup:active"}} {{action "setGroupPreference" 1}}>
+                            <div class="form-group">
+                                <h5>
+                                    Varolan gruplardan seçim yapmak istiyorum
+                                </h5> {{view Ember.Select content=groups optionLabelPath="content.name" optionValuePath="content.id" selection=selectedGroup prompt="Grup seçiniz" class="form-control"}}
+                                <div {{bind-attr class=":help-block :error newGroup:hidden"}}>
+                                    {{saveGroupError}}
+                                </div>
+                            </div>
+                        </div>
+                        <div {{bind-attr class=":well newGroup:active"}} {{action "setGroupPreference" 2}}>
+                            <div class="form-group">
+                                <h5>
+                                    Yeni bir gruba eklemek istiyorum
+                                </h5> {{input value=newGroupText class="form-control"}}
+                                <div {{bind-attr class=":help-block :error existingGroup:hidden"}}>
+                                    {{saveGroupError}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <button class="btn btn-blue btn-block" {{action "setGroupAndSave" }}>Kaydet</button>
+                        </div>
+                    </div>
+                {{/view}}
+
+            {{/if}}
+            {{#if steps.next}}
+                {{#view "pulse-view" class="panel panel-white panel-shadow step-4" id="4" }}
+                    <div class="panel-heading">
+                        <div class="panel-title">Yükleme Tamamlandı</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12">
+                            <h4>Rehberde <span class="text-strong">{{savedGroupName}}</span> grubuna {{validContacts.length}} kişi eklendi:</h4>
+                        </div>
+                        <div class="col-sm-12">
+                            {{#link-to "contacts.index" class="btn btn-orange col-sm-5 col-sm-offset-1"}}<i class="fa fa-envelope"></i> Rehbere dön{{/link-to}}
+                            <a href='#' {{action "sendMessageToGroup"}} class="btn btn-red col-sm-5"><i class="fa fa-envelope"></i> Mesaj At</a>
                         </div>
                     </div>
                 {{/view}}

@@ -11,15 +11,27 @@ export default Ember.Object.create({
     createDataFromModelArray: function(models) {
         if (!models) return {};
         if (!models instanceof Array) return {};
-        if (models.length === 0) return {}
+        if (models.length === 0) return {};
         return new Promise(function(resolve) {
             var data = [];
             var expectedLength = (this.settings.templateOnly) ? 1 : models.get("length") + 1;
-            models.forEach(function(model) {
-                model.serialize().then(function(s) {
+
+            models.objectAt(0).serialize().then(function(s){
+                data.push(s.labels);
+
+                if(this.settings.templateOnly){
+                    resolve(data);
+                    return;
+                }
+
+                data.push(s.displayValues);
+            }.bind(this));
+
+            models.slice(1).forEach(function(model) {
+                model.serialize(true).then(function(s) {
+
                     data.push(s.displayValues);
-                    if (data.length === expectedLength - 1) {
-                        data[0] = s.labels;
+                    if (data.length === expectedLength) {
                         resolve(data);
                     }
                 }.bind(this));

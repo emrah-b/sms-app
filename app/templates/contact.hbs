@@ -63,8 +63,8 @@
             <tbody>
                 {{#each model.customFieldBindings}}
                     <tr>
-                        <td>{{label}}</td>
-                        <td>{{custom-field-display value type}}</td>
+                        <td>{{customField.label}}</td>
+                        <td>{{custom-field-display value customField.type}}</td>
                     </tr>
                 {{/each}}
             </tbody>

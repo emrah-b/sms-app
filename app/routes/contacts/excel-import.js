@@ -8,7 +8,7 @@ export default Ember.Route.extend({
                 var binding = this.store.createRecord('custom-field-binding', {
                     customField: customField,
                     label: customField.get("label")
-                })
+                });
                 contact.get("customFieldBindings").then(function(bindings) {
                     bindings.pushObject(binding);
                 });
@@ -23,8 +23,18 @@ export default Ember.Route.extend({
                 this.transitionTo('contacts');
             }.bind(this), 300);
         },
-        willTransition: function() {
-            this.controller.set("step", 1);
+        willTransition: function(transition) {
+            if(this.controller.get("step") > 1 && this.controller.get("step") < 4){
+                if(!confirm("Yaptığınız değişiklikler kaydedilmeyecektir, çıkmak istediğinize emin misiniz?")){
+                    transition.abort();
+                    return false;
+                }else {
+                    this.controller.set("step", 1);
+                    return true;
+                }
+            }else {
+                this.controller.set("step", 1);
+            }
         }
     }
 });

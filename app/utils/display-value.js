@@ -1,4 +1,5 @@
 export default function displayValue(value, type) {
+    if(!value) return;
     if (type === 'date') {
         return moment(Date.parse(value)).format("L");
     } else if (type === 'bool') {
